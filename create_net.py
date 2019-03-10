@@ -39,18 +39,30 @@ def conv_relu_layer(bottom, num_out):
                           convolution_param=dict(num_output=num_out, kernel_size=3, stride=1, pad=1,
                                                  weight_filler=dict(type='gaussian', std=0.001),
                                                  bias_filler=dict(type='constant', value=0)),
-                          # engine = P.Convolution.CUDNN),
                           param=[{'lr_mult': 1, 'decay_mult': 1}, {'lr_mult': 2, 'decay_mult': 0}])
 
     conv1 = L.ReLU(conv1, in_place = True)
 
     return conv1
 
+def conv_relu_layer5(bottom, num_out):
+    # 增加了孔算法,多了一个dilation参数
+    conv1 = L.Convolution(bottom,
+                          convolution_param=dict(num_output=num_out, kernel_size=3, stride=1, pad=2,dilation = 2,
+                                                 weight_filler=dict(type='gaussian', std=0.001),
+                                                 bias_filler=dict(type='constant', value=0)),
+                          param=[{'lr_mult': 1, 'decay_mult': 1}, {'lr_mult': 2, 'decay_mult': 0}])
+
+    conv1 = L.ReLU(conv1, in_place = True)
+
+    return conv1
+
+
 def conv_down_relu_layer(bottom, num_out):
 
     conv1 = L.Convolution(bottom,
                           convolution_param=dict(num_output=num_out, kernel_size=3, stride=1, pad=1,
-                                                 weight_filler=dict(type='xavier', std=0.001),
+                                                 weight_filler=dict(type='xavier', std=0.01),
                                                  bias_filler=dict(type='constant', value=0)),
                           # engine = P.Convolution.CUDNN),
                           param=[{'lr_mult': 1, 'decay_mult': 1}, {'lr_mult': 2, 'decay_mult': 0}])
@@ -80,8 +92,7 @@ def deconv_crop_layer(bottom, bottom2,num_out, size_kerbel,size_stride,num_offse
                                                        param = [{'lr_mult':0,'decay_mult':1},{'lr_mult':0, 'decay_mult':0}])
     feature_dsn = L.Crop(deconv1,bottom2,
                           crop_param = dict(axis = 2, offset = num_offset))
-    # feature_dsn = L.Crop(bottom2, deconv1,
-    #                       crop_param = dict(axis = 2, offset = num_offset))
+
     return feature_dsn
 
 def cnn_module(bottom, num_out):
@@ -100,14 +111,13 @@ def cnn_module(bottom, num_out):
     pool3 = L.Pooling(conv3_3, pooling_param = dict(kernel_size= 2, stride = 2, pad= 0, pool=P.Pooling.MAX))
 
     conv4_1 = conv_relu_layer(pool3, 512)
-    conv4_2 = conv_relu_layer(conv4_1, 256)
-    conv4_3 = conv_relu_layer(conv4_2, 256)
-    pool4 = L.Pooling(conv4_3, pooling_param=dict(kernel_size=2, stride=2, pad=0, pool=P.Pooling.MAX))
+    conv4_2 = conv_relu_layer(conv4_1, 512)
+    conv4_3 = conv_relu_layer(conv4_2, 512)
+    pool4 = L.Pooling(conv4_3, pooling_param=dict(kernel_size= 3, stride= 1, pad= 1, pool=P.Pooling.MAX))
 
-    conv5_1 = conv_relu_layer(pool4, 512)
-    conv5_2 = conv_relu_layer(conv5_1, 256)
-    conv5_3 = conv_relu_layer(conv5_2, 256)
-    pool5 = L.Pooling(conv5_3, pooling_param=dict(kernel_size=2, stride=2, pad=0, pool=P.Pooling.MAX))
+    conv5_1 = conv_relu_layer5(pool4, 512)
+    conv5_2 = conv_relu_layer5(conv5_1, 512)
+    conv5_3 = conv_relu_layer5(conv5_2, 512)
 
     # conv1 side output
     conv1_2_down = conv_down_relu_layer(conv1_2,32)
@@ -130,13 +140,12 @@ def cnn_module(bottom, num_out):
     feature_dsn4 = deconv_crop_layer(conv4_3_norm, bottom, 128, 16, 8, 4)
 
     # conv5 side output
-    conv5_3_down = conv_relu_layer(conv5_3, 256)
+    conv5_3_down = conv_down_relu_layer(conv5_3, 256)
     conv5_3_norm = conv_normalize_layer(conv5_3_down, 128)
-    # feature_dsn5 = deconv_crop_layer(conv5_3_norm, bottom, 128, 16, 8, 4)
+    feature_dsn5 = deconv_crop_layer(conv5_3_norm, bottom, 128, 16, 8, 4)
 
     # concat multiscale feature layer
-    # feature = L.Concat(conv1_2_norm, feature_dsn2, feature_dsn3, feature_dsn4, feature_dsn5,
-    feature = L.Concat(feature_dsn1, feature_dsn2, feature_dsn3, feature_dsn4,
+    feature = L.Concat(feature_dsn1, feature_dsn2, feature_dsn3, feature_dsn4, feature_dsn5,
                        concat_param = dict(axis = 1))
     # the layer of del
     # conv_dim = conv_relu_layer(feature,256)
