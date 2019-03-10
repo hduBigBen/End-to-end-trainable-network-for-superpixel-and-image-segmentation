@@ -21,25 +21,27 @@ def normalize(bottom, dim):
 
     return L.Eltwise(bottom_relu, denom, operation=P.Eltwise.PROD)
 
-def conv_bn_relu_layer(bottom, num_out):
 
+def conv_bn_relu_layer(bottom, num_out):
     conv1 = L.Convolution(bottom,
-                          convolution_param = dict(num_output = num_out, kernel_size = 3, stride = 1, pad = 1,
-                                                   weight_filler = dict(type = 'gaussian', std = 0.001),
-                                                   bias_filler = dict(type = 'constant', value = 0)),
-                          param=[{'lr_mult':1, 'decay_mult':1}, {'lr_mult':2, 'decay_mult':0}])
+                          convolution_param=dict(num_output=num_out, kernel_size=3, stride=1, pad=1,
+                                                 weight_filler=dict(type='gaussian', std=0.001),
+                                                 bias_filler=dict(type='constant', value=0)),
+                          # engine = P.Convolution.CUDNN),
+                          param=[{'lr_mult': 1, 'decay_mult': 1}, {'lr_mult': 2, 'decay_mult': 0}])
     bn1 = L.BatchNorm(conv1)
     bn1 = L.ReLU(bn1, in_place = True)
 
     return bn1
 
 def conv_relu_layer(bottom, num_out):
-
     conv1 = L.Convolution(bottom,
-                          convolution_param = dict(num_output = num_out, kernel_size = 3, stride = 1, pad = 1,
-                                                   weight_filler = dict(type = 'gaussian', std = 0.001),
-                                                   bias_filler = dict(type = 'constant', value = 0)),
-                          param=[{'lr_mult':1, 'decay_mult':1}, {'lr_mult':2, 'decay_mult':0}])
+                          convolution_param=dict(num_output=num_out, kernel_size=3, stride=1, pad=1,
+                                                 weight_filler=dict(type='gaussian', std=0.001),
+                                                 bias_filler=dict(type='constant', value=0)),
+                          # engine = P.Convolution.CUDNN),
+                          param=[{'lr_mult': 1, 'decay_mult': 1}, {'lr_mult': 2, 'decay_mult': 0}])
+
     conv1 = L.ReLU(conv1, in_place = True)
 
     return conv1
@@ -47,10 +49,12 @@ def conv_relu_layer(bottom, num_out):
 def conv_down_relu_layer(bottom, num_out):
 
     conv1 = L.Convolution(bottom,
-                          convolution_param = dict(num_output = num_out, kernel_size = 3, stride = 1, pad = 1,
-                                                   weight_filler = dict(type = 'xavier', std = 0.01),
-                                                   bias_filler = dict(type = 'constant', value = 0)),
-                          param=[{'lr_mult':1, 'decay_mult':1}, {'lr_mult':2, 'decay_mult':0}])
+                          convolution_param=dict(num_output=num_out, kernel_size=3, stride=1, pad=1,
+                                                 weight_filler=dict(type='xavier', std=0.001),
+                                                 bias_filler=dict(type='constant', value=0)),
+                          # engine = P.Convolution.CUDNN),
+                          param=[{'lr_mult': 1, 'decay_mult': 1}, {'lr_mult': 2, 'decay_mult': 0}])
+
     conv1 = L.ReLU(conv1, in_place = True)
 
     return conv1
@@ -58,22 +62,26 @@ def conv_down_relu_layer(bottom, num_out):
 def conv_normalize_layer(bottom, num_out):
 
     conv1 = L.Convolution(bottom,
-                          convolution_param = dict(num_output = num_out, kernel_size = 1, stride = 1, pad = 1,
-                                                   weight_filler = dict(type = 'xavier', std = 0.01),
-                                                   bias_filler = dict(type = 'constant', value = 0)),
-                          param=[{'lr_mult':1, 'decay_mult':1}, {'lr_mult':2, 'decay_mult':0}])
+                          convolution_param=dict(num_output=num_out, kernel_size=1, stride=1, pad=1,
+                                                 weight_filler=dict(type='xavier', std=0.01),
+                                                 bias_filler=dict(type='constant', value=0)),
+                          # engine = P.Convolution.CUDNN),
+                          param=[{'lr_mult': 1, 'decay_mult': 1}, {'lr_mult': 2, 'decay_mult': 0}])
+
     norm = L.Normalize(conv1,
-                     norm_param = dict(across_spatial = false,
+                       norm_param = dict(across_spatial = False,
                                        scale_filler = dict(type = 'constant', value = 20),
-                                       channel_shared = false))
+                                       channel_shared = False))
     return norm
 
 def deconv_crop_layer(bottom, bottom2,num_out, size_kerbel,size_stride,num_offset):
     deconv1 = L.Deconvolution(bottom,
-                              convolution_param = dict(num_output = num_out, kernel_size = size_kerbel, stride = size_stride, pad =1,
-                                                       parm = [{'lr_mult':0,'decay_mult':1},{'lr_mult':0, 'decay_mult':0}]))
+                              convolution_param = dict(num_output = num_out, kernel_size = size_kerbel, stride = size_stride, pad =1),
+                                                       param = [{'lr_mult':0,'decay_mult':1},{'lr_mult':0, 'decay_mult':0}])
     feature_dsn = L.Crop(deconv1,bottom2,
                           crop_param = dict(axis = 2, offset = num_offset))
+    # feature_dsn = L.Crop(bottom2, deconv1,
+    #                       crop_param = dict(axis = 2, offset = num_offset))
     return feature_dsn
 
 def cnn_module(bottom, num_out):
@@ -89,7 +97,7 @@ def cnn_module(bottom, num_out):
     conv3_1 = conv_relu_layer(pool2, 256)
     conv3_2 = conv_relu_layer(conv3_1, 256)
     conv3_3 = conv_relu_layer(conv3_2, 256)
-    pool3 = L.Pooling(conv3_3, pooling_param=dict(kernel_size=2, stride=2, pad=0, pool=P.Pooling.MAX))
+    pool3 = L.Pooling(conv3_3, pooling_param = dict(kernel_size= 2, stride = 2, pad= 0, pool=P.Pooling.MAX))
 
     conv4_1 = conv_relu_layer(pool3, 512)
     conv4_2 = conv_relu_layer(conv4_1, 256)
@@ -104,6 +112,7 @@ def cnn_module(bottom, num_out):
     # conv1 side output
     conv1_2_down = conv_down_relu_layer(conv1_2,32)
     conv1_2_norm = conv_normalize_layer(conv1_2_down, 32)
+    feature_dsn1 = L.Crop(conv1_2_norm, bottom)
 
     # conv2 side output
     conv2_2_down = conv_down_relu_layer(conv2_2, 64)
@@ -118,15 +127,16 @@ def cnn_module(bottom, num_out):
     # conv4 side output
     conv4_3_down = conv_down_relu_layer(conv4_3, 256)
     conv4_3_norm = conv_normalize_layer(conv4_3_down, 128)
-    feature_dsn4 = deconv_crop_layer(conv4_3_norm, bottom, 128, 16,8 ,4)
+    feature_dsn4 = deconv_crop_layer(conv4_3_norm, bottom, 128, 16, 8, 4)
 
     # conv5 side output
     conv5_3_down = conv_relu_layer(conv5_3, 256)
-    conv5_3_norm = conv_normalize_layer(conv5_3_down,128)
-    feature_dsn5 = deconv_crop_layer(conv5_3_norm, bottom, 128, 16, 8, 4)
+    conv5_3_norm = conv_normalize_layer(conv5_3_down, 128)
+    # feature_dsn5 = deconv_crop_layer(conv5_3_norm, bottom, 128, 16, 8, 4)
 
     # concat multiscale feature layer
-    feature = L.Concat(conv1_2_norm, feature_dsn2, feature_dsn3, feature_dsn4, feature_dsn5,
+    # feature = L.Concat(conv1_2_norm, feature_dsn2, feature_dsn3, feature_dsn4, feature_dsn5,
+    feature = L.Concat(feature_dsn1, feature_dsn2, feature_dsn3, feature_dsn4,
                        concat_param = dict(axis = 1))
     # the layer of del
     # conv_dim = conv_relu_layer(feature,256)
@@ -289,6 +299,7 @@ def create_ssn_net(img_height, img_width,
                                                                  color_scale = float(color_scale)))
 
     ### Transform Pixel features trans_dim = 15
+    # n.trans_features = cnn_module(n.pixel_features, trans_dim)
     n.trans_features = cnn_module(n.pixel_features, trans_dim)
 
 
