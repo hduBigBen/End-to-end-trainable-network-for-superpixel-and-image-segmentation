@@ -41,7 +41,7 @@ class DataProcessor(object):
 
 
 class sequenceGenerator(object):
-    def __init__(self, batch_size, data_type,
+    def   __init__(self, batch_size, data_type,
                  is_random, reset_count):
         self.batch_size = batch_size
         self.image_list = IMG_LIST[data_type]
@@ -144,6 +144,8 @@ class InputRead(caffe.Layer):
         spatial_size = [self.height, self.width]
         self.data_processor = DataProcessor(self.patch_size, data_type,
                                             self.top_names, num_spixels)
+
+
         self.sequence_generator = sequenceGenerator(self.batch_size,
                                                     data_type,
                                                     self.is_random_image_order,
