@@ -120,7 +120,7 @@ class InputRead(caffe.Layer):
         self.patch_size = [self.height, self.width]
         self.num_tops = 7
         self.top_names = ['img', 'spixel_init', 'feat_spixel_init', 'label', 'problabel', 'seg_label', 'sp_label'] # 添加sortlabel
-        self.top_channels = [3, 1, 1, 1, 50, 3, 2]
+        self.top_channels = [3, 1, 1, 1, 50, 3, 1]
         self.pool_size = 10
 
     def setup(self, bottom, top):

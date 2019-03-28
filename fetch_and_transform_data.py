@@ -58,12 +58,12 @@ def transform_and_get_splabel(im, max_spixels, out_size):
     im = np.lib.pad(im, ((0, pad_height), (0, pad_width)), 'constant',
                     constant_values=-10)
 
-    transformer = caffe.io.Transformer({'img': (1, 3, out_size[0],
+    transformer = caffe.io.Transformer({'img': (1, 1, out_size[0],
                                                 out_size[1])})
 
     # channel 放到前面
     transformer.set_transpose('img', (2, 0, 1))
-
+    im = np.expand_dims(im, axis=0)
     im = np.asarray(transformer.preprocess('img', im))
     im = np.expand_dims(im, axis=0)
 
@@ -220,7 +220,7 @@ def fetch_and_transform_patch_data(imgname,
         im = im[:, ::-1, ...]
         sort_gt = sort_gt[:, ::-1, ...]
 
-        sp_gt = sp_gt[:, ::-1, ...]
+        sp_gt = sp_gt[:, ::-1]
 
         gtseg = gtseg[:, ::-1]
 
@@ -257,7 +257,7 @@ def fetch_and_transform_patch_data(imgname,
 
     out_sort_gt = transform_and_get_image(sort_gt_cropped, max_spixels, [out_height, out_width])
 
-    # out_sp_gt = transform_and_get_splabel(sp_gt_cropped, max_spixels, [out_height, out_width])
+    out_sp_gt = transform_and_get_splabel(sp_gt_cropped, max_spixels, [out_height, out_width])
 
 
     gtseg_cropped = gtseg[start_row : start_row + out_height,
@@ -282,6 +282,6 @@ def fetch_and_transform_patch_data(imgname,
         if in_name == 'seg_label':
             inputs['seg_label'] = out_sort_gt
         if in_name == 'sp_label':
-            inputs['sp_label'] = sp_gt_cropped
+            inputs['sp_label'] = out_sp_gt
 
     return [inputs, height, width]
