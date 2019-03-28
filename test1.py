@@ -316,6 +316,9 @@ def create_ssn_net(img_height, img_width,
         n.spixel_init = L.Input(shape=[dict(dim=[1, 1, img_height, img_width])])
         n.feat_spixel_init = L.Input(shape=[dict(dim=[1, 1, img_height, img_width])])
 
+        n.bound_param = L.Input(shape = [dict(dim = [1, 1, 1, 1])])
+        n.minsize_param = L.Input(shape = [dict(dim = [1, 1, 1, 1])])
+
     # 我也不知道这里怎么得出pixel_features
     # lib/video_prop_networks/lib/caffe/src/caffe/layers
     n.pixel_features = L.PixelFeature(n.img,
@@ -455,7 +458,7 @@ def create_ssn_net(img_height, img_width,
 
         # the loss of del
         # superpixel_pooling
-        n.superpixel_pooling_out, n.superpixel_seg_label = L.SuperpixelPooling(n.conv_dsp, n.seg_label, n.spixel_label,
+        n.superpixel_pooling_out, n.superpixel_seg_label = L.SuperpixelPooling(n.conv_dsp, n.seg_label, n.new_spix_indices,
                                                                                superpixel_pooling_param=dict(
                                                                                    pool_type=P.Pooling.AVE), ntop=2)
 
@@ -468,6 +471,10 @@ def create_ssn_net(img_height, img_width,
         n.new_spix_indices = compute_final_spixel_labels(n.final_pixel_assoc,
                                                          n.spixel_init,
                                                          num_spixels_h, num_spixels_w)
+
+        n.segmentation = L.EgbSegment(n.conv_dsp, n.new_spix_indices, n.bound_param, n.minsize_param,
+                                      egb_segment_param = dict(bound = 3, min_size = 10))
+
 
     #  NetSpec 是包含Tops（可以直接赋值作为属性）的集合。调用 NetSpec.to_proto 创建包含所有层(layers)的网络参数，
     # 这些层(layers)需要被赋值，并使用被赋值的名字。

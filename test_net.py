@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-
+# coding: utf-8
 """
 Copyright (C) 2018 NVIDIA Corporation.  All rights reserved.
 Licensed under the CC BY-NC-SA 4.0 license (https://creativecommons.org/licenses/by-nc-sa/4.0/legalcode).
@@ -35,56 +35,76 @@ def compute_spixels(data_type, n_spixels, num_steps,
 
     p_scale = 0.40
     color_scale = 0.26
+    bound = range(1, 71, 2)
+    for i in range(len(bound)):
+        threshold = bound[i] / 100.0
+        if threshold <= 0.3:
+            min_size = [0, 1, 2, 3]
+        else:
+            min_size = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 
-    with open(image_list) as list_f:
-        for imgname in list_f:
-            print(imgname)
-            imgname = imgname[:-1]
-            [inputs, height, width] = \
-                fetch_and_transform_data(imgname, data_type,
-                                         ['img', 'label', 'problabel'],
-                                         int(n_spixels))
+        for j in range(len(min_size)):
+            new_save_root = os.path.join(save_root, 'threshold_{:.2f}_{}'.format(threshold, min_size[j]))
+            if not os.path.exists(new_save_root):
+                os.mkdir(new_save_root)
 
-            height = inputs['img'].shape[2]
-            width = inputs['img'].shape[3]
-            [spixel_initmap, feat_spixel_initmap, num_spixels_h, num_spixels_w] =\
-                transform_and_get_spixel_init(int(n_spixels), [height, width])
+            with open(image_list) as list_f:
+                for imgname in list_f:
+                    print(imgname)
+                    imgname = imgname[:-1]
+                    [inputs, height, width] = \
+                        fetch_and_transform_data(imgname, data_type,
+                                                 ['img', 'label', 'problabel'],
+                                                 int(n_spixels))
 
-            dinputs = {}
-            dinputs['img'] = inputs['img']
-            dinputs['spixel_init'] = spixel_initmap
-            dinputs['feat_spixel_init'] = feat_spixel_initmap
+                    height = inputs['img'].shape[2]
+                    width = inputs['img'].shape[3]
+                    [spixel_initmap, feat_spixel_initmap, num_spixels_h, num_spixels_w] = \
+                        transform_and_get_spixel_init(int(n_spixels), [height, width])
 
-            pos_scale_w = (1.0 * num_spixels_w) / (float(p_scale) * width)
-            pos_scale_h = (1.0 * num_spixels_h) / (float(p_scale) * height)
-            pos_scale = np.max([pos_scale_h, pos_scale_w])
+                    dinputs = {}
+                    dinputs['img'] = inputs['img']
+                    dinputs['spixel_init'] = spixel_initmap
+                    dinputs['feat_spixel_init'] = feat_spixel_initmap
 
-            net = load_ssn_net(height, width, int(num_spixels_w * num_spixels_h),
-                               float(pos_scale), float(color_scale),
-                               num_spixels_h, num_spixels_w, int(num_steps))
+                    # 新加
+                    dinputs['bound_param'].data[...] = threshold
+                    dinputs['minsize_param'].data[...] = min_size[j]
 
-            if caffe_model is not None:
-                net.copy_from(caffe_model)
-            else:
-                net = initialize_net_weight(net)
 
-            num_spixels = int(num_spixels_w * num_spixels_h)
-            result = net.forward_all(**dinputs)
+                    pos_scale_w = (1.0 * num_spixels_w) / (float(p_scale) * width)
+                    pos_scale_h = (1.0 * num_spixels_h) / (float(p_scale) * height)
+                    pos_scale = np.max([pos_scale_h, pos_scale_w])
 
-            given_img = fromimage(Image.open(IMG_FOLDER[data_type] + imgname + '.jpg'))
-            spix_index = np.squeeze(net.blobs['new_spix_indices'].data).astype(int)
+                    net = load_ssn_net(height, width, int(num_spixels_w * num_spixels_h),
+                                       float(pos_scale), float(color_scale),
+                                       num_spixels_h, num_spixels_w, int(num_steps))
 
-            if enforce_connectivity:
-                segment_size = (given_img.shape[0] * given_img.shape[1]) / (int(n_spixels) * 1.0)
-                min_size = int(0.06 * segment_size)
-                max_size = int(3 * segment_size)
-                spix_index = enforce_connectivity(spix_index[None, :, :], min_size, max_size)[0]
+                    if caffe_model is not None:
+                        net.copy_from(caffe_model)
+                    else:
+                        net = initialize_net_weight(net)
 
-            spixel_image = get_spixel_image(given_img, spix_index)
-    	    out_img_file = out_folder + imgname + '_bdry.jpg'
-            imsave(out_img_file, spixel_image)
-            out_file = out_folder + imgname + '.npy'
-            np.save(out_file, spix_index)
+                    num_spixels = int(num_spixels_w * num_spixels_h)
+                    result = net.forward_all(**dinputs)
+
+                    # given_img = fromimage(Image.open(IMG_FOLDER[data_type] + imgname + '.jpg'))
+                    # spix_index = np.squeeze(net.blobs['new_spix_indices'].data).astype(int)
+                    #
+                    # if enforce_connectivity:
+                    #     segment_size = (given_img.shape[0] * given_img.shape[1]) / (int(n_spixels) * 1.0)
+                    #     min_size = int(0.06 * segment_size)
+                    #     max_size = int(3 * segment_size)
+                    #     spix_index = enforce_connectivity(spix_index[None, :, :], min_size, max_size)[0]
+                    #
+                    # spixel_image = get_spixel_image(given_img, spix_index)
+                    out3 = net.blobs['segmentation'].data[0].copy()
+                    out3 = out3.transpose((1, 2, 0)).astype(dtype=np.uint16)
+                    out_img_file = out_folder + imgname + '_bdry.jpg'
+                    imsave(out_img_file, out3)
+                    out_file = out_folder + imgname + '.npy'
+                    np.save(out_file, out3)
+
 
     return
 
