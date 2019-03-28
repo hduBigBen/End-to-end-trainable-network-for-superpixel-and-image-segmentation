@@ -4,6 +4,12 @@ from caffe import layers as L, params as P, to_proto
 from caffe.proto import caffe_pb2
 import tempfile
 from loss_functions import *
+import numpy as np
+import sys
+sys.path.append('../lib/cython')
+from connectivity import enforce_connectivity
+
+from utils import *
 
 trans_dim = 15
 
@@ -296,10 +302,10 @@ def create_ssn_net(img_height, img_width,
                      ntop = 7)
 
     elif phase == 'TEST':
-        n.img, n.spixel_init, n.feat_spixel_init, n.label, n.problabel = \
+        n.img, n.spixel_init, n.feat_spixel_init, n.label, n.problabel, n.seg_label, n.sp_label= \
             L.Python(python_param = dict(module = "input_patch_data_layer", layer = "InputRead", param_str = "VAL_10_" + str(num_spixels)),
                      include = dict(phase = 1),
-                     ntop = 5)
+                     ntop = 7)
     else:
         # im:10  ——表示对待识别样本进行数据增广的数量，该值的大小可自行定义。但一般会进行5次crop，将整幅图像分为多个flip。该值为10则表示会将待识别的样本分为10部分输入到网络进行识别。
         # 如果相对整幅图像进行识别而不进行图像数据增广，则可将该值设置为1.
@@ -432,24 +438,31 @@ def create_ssn_net(img_height, img_width,
 
         # 这里需要获得超像素
 
-        n.spix_index = np.squeeze(net.blobs['new_spix_indices'].data).astype(int)
-
-        if enforce_connectivity:
-            segment_size = (n.img.shape[0] * n.img.shape[1]) / (int(num_spixels) * 1.0)
-            min_size = int(0.06 * segment_size)
-            max_size = int(3 * segment_size)
-            # 用于从标签中删除断开连接的小区域的helper函数   ps:这里我觉得应该是得到的超像素
-            n.spix_index = enforce_connectivity(n.spix_index[None, :, :], min_size, max_size)[0]
-
-        # 返回标记区域之间边界突出显示的图像。 这个应该相当于n.sp_label
-        n.spixel_image = get_spixel_image(n.img, n.spix_index)
+        # n.spix_index = np.squeeze(net.blobs['new_spix_indices'].data).astype(int)
+        # spix_index = n.new_spix_indices
+        #
+        # # if enforce_connectivity:
+        # #     segment_size = (img_height * img_width) / (int(num_spixels) * 1.0)
+        # #     min_size = int(0.06 * segment_size)
+        # #     max_size = int(3 * segment_size)
+        # #     # 用于从标签中删除断开连接的小区域的helper函数   ps:这里我觉得应该是得到的超像素
+        # #     spix_index = enforce_connectivity(spix_index[None, :, :], min_size, max_size)[0]
+        #
+        #
+        # # 返回标记区域之间边界突出显示的图像。 这个应该相当于n.sp_label
+        # n.spixel_image = get_spixel_image(n.img, spix_index)
 
 
         # the loss of del
         # superpixel_pooling
-        n.superpixel_pooling_out, n.superpixel_seg_label= L.SuperpixelPooling(n.conv_dsp, n.seg_label, n.spixel_image,
-                                                                              superpixel_pooling_param = dict(
-                                                                                  pool_type=AVE))
+        # n.superpixel_pooling_out, n.superpixel_seg_label= L.SuperpixelPooling(n.conv_dsp, n.seg_label, n.new_spix_indices,
+        #                                                                       superpixel_pooling_param = dict(
+        #                                                                           pool_type= P.Pooling.AVE ))
+
+        n.superpixel_pooling_out, n.superpixel_seg_label = L.SuperpixelPooling(n.conv_dsp, n.seg_label, n.new_spix_indices,
+                                                                               superpixel_pooling_param=dict(
+                                                                                   pool_type=P.Pooling.AVE), ntop=2)
+
         n.sim_loss = L.SimilarityLoss(n.superpixel_pooling_out,n.superpixel_seg_label, n.sp_label,
                                       loss_weight = 1.0,similarity_loss_param = dict(sample_points = 1))
 
@@ -463,6 +476,7 @@ def create_ssn_net(img_height, img_width,
     return n.to_proto()
 
 
+# test net
 def load_ssn_net(img_height, img_width,
                  num_spixels, pos_scale, color_scale,
                  num_spixels_h, num_spixels_w, num_steps):
@@ -478,7 +492,7 @@ def load_ssn_net(img_height, img_width,
 
     return caffe.Net(f.name, caffe.TEST)
 
-
+# train Net
 def get_ssn_net(img_height, img_width,
                 num_spixels, pos_scale, color_scale,
                 num_spixels_h, num_spixels_w, num_steps,

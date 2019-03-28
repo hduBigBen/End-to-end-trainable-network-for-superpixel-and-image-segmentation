@@ -176,7 +176,7 @@ def cnn_module(bottom, num_out):
                     convolution_param=dict(num_output= 64, kernel_size=1, stride=1, pad=0,
                                             weight_filler=dict(type='xavier', std=0.01),
                                             bias_filler=dict(type='constant', value=0)),
-                    param=[{'lr_mult': 10, 'decay_mult': 1}, {'lr_mult': 20, 'decay_mult': 0}])
+                    param=[{'lr_mult': 1, 'decay_mult': 1}, {'lr_mult': 2, 'decay_mult': 0}])
 
 
 
@@ -455,10 +455,6 @@ def create_ssn_net(img_height, img_width,
 
         # the loss of del
         # superpixel_pooling
-        # n.superpixel_pooling_out, n.superpixel_seg_label= L.SuperpixelPooling(n.conv_dsp, n.seg_label, n.new_spix_indices,
-        #                                                                       superpixel_pooling_param = dict(
-        #                                                                           pool_type= P.Pooling.AVE ))
-
         n.superpixel_pooling_out, n.superpixel_seg_label = L.SuperpixelPooling(n.conv_dsp, n.seg_label, n.new_spix_indices,
                                                                                superpixel_pooling_param=dict(
                                                                                    pool_type=P.Pooling.AVE), ntop=2)
