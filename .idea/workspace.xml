@@ -82,7 +82,7 @@
         <entry file="file://$PROJECT_DIR$/input_patch_data_layer.py">
           <provider selected="true" editor-type-id="text-editor">
             <state>
-              <caret line="120" column="25" lean-forward="true" selection-start-line="120" selection-start-column="25" selection-end-line="120" selection-end-column="25" />
+              <caret line="120" column="25" selection-start-line="120" selection-start-column="25" selection-end-line="120" selection-end-column="25" />
             </state>
           </provider>
         </entry>
@@ -91,7 +91,7 @@
         <entry file="file://$PROJECT_DIR$/test1.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="-150">
-              <caret line="436" column="57" lean-forward="true" selection-start-line="436" selection-start-column="57" selection-end-line="436" selection-end-column="57" />
+              <caret line="436" column="57" selection-start-line="436" selection-start-column="57" selection-end-line="436" selection-end-column="57" />
               <folding>
                 <element signature="e#24#48#0" expanded="true" />
               </folding>
@@ -103,7 +103,7 @@
         <entry file="file://$PROJECT_DIR$/train_ssn.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="35">
-              <caret line="60" column="40" lean-forward="true" selection-start-line="60" selection-start-column="40" selection-end-line="60" selection-end-column="40" />
+              <caret line="60" column="40" selection-start-line="60" selection-start-column="40" selection-end-line="60" selection-end-column="40" />
             </state>
           </provider>
         </entry>
@@ -154,7 +154,7 @@
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="5">
+  <component name="ProjectFrameBounds" extendedState="4">
     <option name="x" value="142" />
     <option name="y" value="24" />
     <option name="width" value="1377" />
@@ -251,7 +251,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="142" y="24" width="1377" height="1056" extended-state="5" />
+    <frame x="142" y="24" width="1377" height="1056" extended-state="4" />
     <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.19793205" />
@@ -371,21 +371,21 @@
     <entry file="file://$PROJECT_DIR$/input_patch_data_layer.py">
       <provider selected="true" editor-type-id="text-editor">
         <state>
-          <caret line="120" column="25" lean-forward="true" selection-start-line="120" selection-start-column="25" selection-end-line="120" selection-end-column="25" />
+          <caret line="120" column="25" selection-start-line="120" selection-start-column="25" selection-end-line="120" selection-end-column="25" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/train_ssn.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="35">
-          <caret line="60" column="40" lean-forward="true" selection-start-line="60" selection-start-column="40" selection-end-line="60" selection-end-column="40" />
+          <caret line="60" column="40" selection-start-line="60" selection-start-column="40" selection-end-line="60" selection-end-column="40" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/test1.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-150">
-          <caret line="436" column="57" lean-forward="true" selection-start-line="436" selection-start-column="57" selection-end-line="436" selection-end-column="57" />
+          <caret line="436" column="57" selection-start-line="436" selection-start-column="57" selection-end-line="436" selection-end-column="57" />
           <folding>
             <element signature="e#24#48#0" expanded="true" />
           </folding>
