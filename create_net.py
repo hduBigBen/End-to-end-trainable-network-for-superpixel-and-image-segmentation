@@ -4,6 +4,12 @@ from caffe import layers as L, params as P, to_proto
 from caffe.proto import caffe_pb2
 import tempfile
 from loss_functions import *
+import numpy as np
+import sys
+sys.path.append('../lib/cython')
+from connectivity import enforce_connectivity
+
+from utils import *
 
 trans_dim = 15
 
@@ -38,6 +44,18 @@ def conv_relu_layer(bottom, num_out):
     conv1 = L.Convolution(bottom,
                           convolution_param=dict(num_output=num_out, kernel_size=3, stride=1, pad=1,
                                                  weight_filler=dict(type='gaussian', std=0.001),
+                                                 bias_filler=dict(type='constant', value=0)),
+                          param=[{'lr_mult': 1, 'decay_mult': 1}, {'lr_mult': 2, 'decay_mult': 0}])
+
+    conv1 = L.ReLU(conv1, in_place = True)
+
+    return conv1
+
+# feature layer
+def conv_relu_feature_layer(bottom, num_out):
+    conv1 = L.Convolution(bottom,
+                          convolution_param=dict(num_output=num_out, kernel_size=3, stride=1, pad=1,
+                                                 weight_filler=dict(type='xavier', std=0.01),
                                                  bias_filler=dict(type='constant', value=0)),
                           param=[{'lr_mult': 1, 'decay_mult': 1}, {'lr_mult': 2, 'decay_mult': 0}])
 
@@ -147,28 +165,25 @@ def cnn_module(bottom, num_out):
     # concat multiscale feature layer
     feature = L.Concat(feature_dsn1, feature_dsn2, feature_dsn3, feature_dsn4, feature_dsn5,
                        concat_param = dict(axis = 1))
-    # the layer of del
-    # conv_dim = conv_relu_layer(feature,256)
+
+
+
+    # the feature layer of del
+
+    conv_dim = conv_relu_feature_layer(feature, 256)
+
+    conv_dsp = L.Convolution(conv_dim,
+                    convolution_param=dict(num_output= 64, kernel_size=1, stride=1, pad=0,
+                                            weight_filler=dict(type='xavier', std=0.01),
+                                            bias_filler=dict(type='constant', value=0)),
+                    param=[{'lr_mult': 10, 'decay_mult': 1}, {'lr_mult': 20, 'decay_mult': 0}])
+
+
+
+    # the layer of ssn
     conv_comb = conv_relu_layer(feature,num_out)
-
-
-
-    # conv5 = conv_bn_relu_layer(pool2, 64)
-    # conv6 = conv_bn_relu_layer(conv5, 64)
-    #
-    # conv6_upsample = L.Interp(conv6, interp_param = dict(zoom_factor = 4))
-    # conv6_upsample_crop = L.Crop(conv6_upsample, conv2)
-    #
-    # conv4_upsample = L.Interp(conv4, interp_param = dict(zoom_factor = 2))
-    # conv4_upsample_crop = L.Crop(conv4_upsample, conv2)
-    #
-    # conv_concat = L.Concat(bottom, conv2, conv4_upsample_crop, conv6_upsample_crop)
-    #
-    # conv7 = conv_relu_layer(conv_concat, num_out)
-    # # 把多个图层拼接到一起
-    # conv_comb = L.Concat(bottom, conv7)
-
-    return conv_comb
+    # conv_dsp == Feature Embedding Space
+    return conv_comb, conv_dsp
 
 
 # 得到像素-超像素联系
@@ -281,15 +296,16 @@ def create_ssn_net(img_height, img_width,
     n = caffe.NetSpec()
 
     if phase == 'TRAIN':
-        n.img, n.spixel_init, n.feat_spixel_init, n.label, n.problabel = \
+        n.img, n.spixel_init, n.feat_spixel_init, n.label, n.problabel,n.seg_label,n.sp_label = \
             L.Python(python_param = dict(module = "input_patch_data_layer", layer = "InputRead", param_str = "TRAIN_1000000_" + str(num_spixels)),
                      include = dict(phase = 0),
-                     ntop = 5)
+                     ntop = 7)
+
     elif phase == 'TEST':
-        n.img, n.spixel_init, n.feat_spixel_init, n.label, n.problabel = \
+        n.img, n.spixel_init, n.feat_spixel_init, n.label, n.problabel, n.seg_label, n.sp_label= \
             L.Python(python_param = dict(module = "input_patch_data_layer", layer = "InputRead", param_str = "VAL_10_" + str(num_spixels)),
                      include = dict(phase = 1),
-                     ntop = 5)
+                     ntop = 7)
     else:
         # im:10  ——表示对待识别样本进行数据增广的数量，该值的大小可自行定义。但一般会进行5次crop，将整幅图像分为多个flip。该值为10则表示会将待识别的样本分为10部分输入到网络进行识别。
         # 如果相对整幅图像进行识别而不进行图像数据增广，则可将该值设置为1.
@@ -308,9 +324,7 @@ def create_ssn_net(img_height, img_width,
                                                                  color_scale = float(color_scale)))
 
     ### Transform Pixel features trans_dim = 15
-    # n.trans_features = cnn_module(n.pixel_features, trans_dim)
-    n.trans_features = cnn_module(n.pixel_features, trans_dim)
-
+    n.trans_features, n.conv_dsp = cnn_module(n.pixel_features, trans_dim)
 
     # Initial Superpixels
     n.init_spixel_feat = L.SpixelFeature(n.trans_features, n.feat_spixel_init,
@@ -360,7 +374,7 @@ def create_ssn_net(img_height, img_width,
         n.spixel_feat7 = exec_iter(n.spixel_feat6, n.trans_features,
                                    n.spixel_init, num_spixels_h,
                                    num_spixels_w, num_spixels, trans_dim)
- 
+
         ### Iteration-8
         n.spixel_feat8 = exec_iter(n.spixel_feat7, n.trans_features,
                                    n.spixel_init, num_spixels_h,
@@ -422,6 +436,38 @@ def create_ssn_net(img_height, img_width,
                                        loss_param = dict(ignore_label = 255),
                                        loss_weight = 1.0)
 
+        # 这里需要获得超像素
+
+        # n.spix_index = np.squeeze(net.blobs['new_spix_indices'].data).astype(int)
+        # spix_index = n.new_spix_indices
+        #
+        # # if enforce_connectivity:
+        # #     segment_size = (img_height * img_width) / (int(num_spixels) * 1.0)
+        # #     min_size = int(0.06 * segment_size)
+        # #     max_size = int(3 * segment_size)
+        # #     # 用于从标签中删除断开连接的小区域的helper函数   ps:这里我觉得应该是得到的超像素
+        # #     spix_index = enforce_connectivity(spix_index[None, :, :], min_size, max_size)[0]
+        #
+        #
+        # # 返回标记区域之间边界突出显示的图像。 这个应该相当于n.sp_label
+        # n.spixel_image = get_spixel_image(n.img, spix_index)
+
+
+        # the loss of del
+        # superpixel_pooling
+        # n.superpixel_pooling_out, n.superpixel_seg_label= L.SuperpixelPooling(n.conv_dsp, n.seg_label, n.new_spix_indices,
+        #                                                                       superpixel_pooling_param = dict(
+        #                                                                           pool_type= P.Pooling.AVE ))
+
+        n.superpixel_pooling_out, n.superpixel_seg_label = L.SuperpixelPooling(n.conv_dsp, n.seg_label, n.new_spix_indices,
+                                                                               superpixel_pooling_param=dict(
+                                                                                   pool_type=P.Pooling.AVE), ntop=2)
+
+        n.sim_loss = L.SimilarityLoss(n.superpixel_pooling_out,n.superpixel_seg_label, n.sp_label,
+                                      loss_weight = 1.0,similarity_loss_param = dict(sample_points = 1))
+
+
+
     else:
         n.new_spix_indices = compute_final_spixel_labels(n.final_pixel_assoc,
                                                          n.spixel_init,
@@ -442,9 +488,10 @@ def load_ssn_net(img_height, img_width,
     f = tempfile.NamedTemporaryFile(mode='w+', delete=False)
     f.write(str(net_proto))
     f.close()
+
     return caffe.Net(f.name, caffe.TEST)
 
-
+# train Net
 def get_ssn_net(img_height, img_width,
                 num_spixels, pos_scale, color_scale,
                 num_spixels_h, num_spixels_w, num_steps,

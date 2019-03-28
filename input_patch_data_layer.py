@@ -1,3 +1,4 @@
+# -*- coding: UTF-8 -*-
 #!/usr/bin/env python
 
 """
@@ -31,6 +32,7 @@ class DataProcessor(object):
         self.num_spixels = num_spixels
 
     def __call__(self, imgname):
+        # 读取图片
         data = fetch_and_transform_patch_data(imgname[0],
                                               self.data_type,
                                               self.top_names,
@@ -111,14 +113,14 @@ class InputRead(caffe.Layer):
 
     def initialize(self):
         self.is_random_image_order = True
-        self.height = TRAIN_PATCH_HEIGHT
-        self.width = TRAIN_PATCH_WIDTH
+        self.height = TRAIN_PATCH_HEIGHT  # 201
+        self.width = TRAIN_PATCH_WIDTH   # 201
 
-        self.batch_size = TRAIN_BATCH_SIZE
+        self.batch_size = TRAIN_BATCH_SIZE # 1
         self.patch_size = [self.height, self.width]
-        self.num_tops = 5
-        self.top_names = ['img', 'spixel_init', 'feat_spixel_init', 'label', 'problabel']
-        self.top_channels = [3, 1, 1, 1, 50]
+        self.num_tops = 7
+        self.top_names = ['img', 'spixel_init', 'feat_spixel_init', 'label', 'problabel', 'seg_label', 'sp_label'] # 添加sortlabel
+        self.top_channels = [3, 1, 1, 1, 50, 3, 2]
         self.pool_size = 10
 
     def setup(self, bottom, top):
@@ -142,6 +144,8 @@ class InputRead(caffe.Layer):
         pool_size = self.pool_size
 
         spatial_size = [self.height, self.width]
+
+        # 这里得到图片
         self.data_processor = DataProcessor(self.patch_size, data_type,
                                             self.top_names, num_spixels)
 
@@ -179,14 +183,14 @@ class InputRead(caffe.Layer):
 
         new_result = {}
 
-        for t, name in enumerate(self.top_names):
-            new_result[self.top_names[t]] =\
-                [None]*len(self.thread_result['data'][0][0][self.top_names[t]])
+        # for t, name in enumerate(self.top_names):
+        #     new_result[self.top_names[t]] =\
+        #         [None]*len(self.thread_result['data'][0][0][self.top_names[t]])
 
-        for i in range(self.batch_size):
-            for t, name in enumerate(self.top_names):
-                top[t].data[i, ...] =\
-                    self.thread_result['data'][i][0][self.top_names[t]]
+        # for i in range(self.batch_size):
+        #     for t, name in enumerate(self.top_names):
+        #         top[t].data[i, ...] =\
+        #             self.thread_result['data'][i][0][self.top_names[t]]
 
         self.dispatch_worker()
 

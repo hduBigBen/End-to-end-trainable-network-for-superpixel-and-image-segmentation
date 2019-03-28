@@ -1,3 +1,4 @@
+# -*- coding: UTF-8 -*-
 #!/usr/bin/env python
 
 """
@@ -42,6 +43,32 @@ def transform_and_get_image(im, max_spixels, out_size):
     im = np.expand_dims(im, axis=0)
 
     return im
+
+# splabel
+def transform_and_get_splabel(im, max_spixels, out_size):
+
+    height = im.shape[0]
+    width = im.shape[1]
+
+    out_height = out_size[0]
+    out_width = out_size[1]
+
+    pad_height = out_height - height
+    pad_width = out_width - width
+    im = np.lib.pad(im, ((0, pad_height), (0, pad_width)), 'constant',
+                    constant_values=-10)
+
+    transformer = caffe.io.Transformer({'img': (1, 3, out_size[0],
+                                                out_size[1])})
+
+    # channel 放到前面
+    transformer.set_transpose('img', (2, 0, 1))
+
+    im = np.asarray(transformer.preprocess('img', im))
+    im = np.expand_dims(im, axis=0)
+
+    return im
+
 
 def transform_and_get_spixel_init(max_spixels, out_size):
 
@@ -119,16 +146,38 @@ def fetch_and_transform_data(imgname,
 
 def scale_image(im, s_factor):
 
+    # 双线性插值
     s_img = scipy.ndimage.zoom(im, (s_factor, s_factor, 1), order = 1)
 
     return s_img
 
+#  新加的
+def scale_seg_label(label, s_factor):
+
+    # 双线性插值
+    s_seg_label = scipy.ndimage.zoom(label, (s_factor, s_factor, 1), order = 1)
+
+    return s_seg_label
+
+def scale_sp_label(label, s_factor):
+
+    # 双线性插值
+    s_sp_label = scipy.ndimage.zoom(label, (s_factor, s_factor), order = 1)
+
+    return s_sp_label
+
+
+
+
 def scale_label(label, s_factor):
 
+    # 最临近插值
     s_label = scipy.ndimage.zoom(label, (s_factor, s_factor), order = 0)
 
     return s_label
 
+
+# train 读取数据
 def fetch_and_transform_patch_data(imgname,
                                    data_type,
                                    out_types,
@@ -140,8 +189,25 @@ def fetch_and_transform_patch_data(imgname,
     image_folder = IMG_FOLDER[data_type]
     image_filename = image_folder + imgname + '.jpg'
     image = img_as_float(io.imread(image_filename))
+    # 进行了一个插值,双线性插值
     image = scale_image(image, s_factor)
     im = rgb2lab(image)
+
+    # 分割后的图像
+
+    sort_gt_folder = SORT_GT_FOLDER[data_type]
+    sort_gt__filename = sort_gt_folder + imgname + '.png'
+    sort_gt = img_as_float(io.imread(sort_gt__filename))
+    sort_gt = scale_seg_label(sort_gt, s_factor)
+    sort_gt = rgb2lab(sort_gt)
+
+    # 超像素
+    sp_gt_folder = SP_GT_FOLDER[data_type]
+    sp_gt_filename = sp_gt_folder + imgname + '.png'
+    sp_gt = img_as_float(io.imread(sp_gt_filename))
+    sp_gt = scale_sp_label(sp_gt, s_factor)
+    # sp_gt = rgb2lab(sp_gt)
+
 
     gt_folder = GT_FOLDER[data_type]
     gt_filename = gt_folder + imgname + '.mat'
@@ -152,12 +218,16 @@ def fetch_and_transform_patch_data(imgname,
 
     if np.random.uniform(0, 1) > 0.5:
         im = im[:, ::-1, ...]
+        sort_gt = sort_gt[:, ::-1, ...]
+
+        sp_gt = sp_gt[:, ::-1, ...]
+
         gtseg = gtseg[:, ::-1]
 
     height = im.shape[0]
     width = im.shape[1]
 
-    if patch_size == None:
+    if patch_size == None:  # patch_size  201 201
         out_height = height
         out_width = width
     else:
@@ -170,13 +240,25 @@ def fetch_and_transform_patch_data(imgname,
     if out_width > width:
         raise "Patch size is greater than image size"
 
+    # 计算剪切坐标
     start_row = myrandom.randint(0, height - out_height)
     start_col = myrandom.randint(0, width - out_width)
-
+    # 得到剪切后的图像
     im_cropped = im[start_row : start_row + out_height,
                     start_col : start_col + out_width, :]
+    # sort_gt
+    sort_gt_cropped = sort_gt[start_row : start_row + out_height,
+                            start_col: start_col + out_width, :]
+    sp_gt_cropped = sp_gt[start_row : start_row + out_height,
+                            start_col: start_col + out_width]
 
+    # 改变维度
     out_img = transform_and_get_image(im_cropped, max_spixels, [out_height, out_width])
+
+    out_sort_gt = transform_and_get_image(sort_gt_cropped, max_spixels, [out_height, out_width])
+
+    # out_sp_gt = transform_and_get_splabel(sp_gt_cropped, max_spixels, [out_height, out_width])
+
 
     gtseg_cropped = gtseg[start_row : start_row + out_height,
                           start_col : start_col + out_width]
@@ -197,5 +279,9 @@ def fetch_and_transform_patch_data(imgname,
             inputs['label'] = label_cropped
         if in_name == 'problabel':
             inputs['problabel'] = problabel_cropped
+        if in_name == 'seg_label':
+            inputs['seg_label'] = out_sort_gt
+        if in_name == 'sp_label':
+            inputs['sp_label'] = sp_gt_cropped
 
     return [inputs, height, width]

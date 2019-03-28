@@ -290,27 +290,16 @@ def create_ssn_net(img_height, img_width,
     n = caffe.NetSpec()
 
     if phase == 'TRAIN':
-        n.img, n.spixel_init, n.feat_spixel_init, n.label, n.problabel = \
+        n.img, n.spixel_init, n.feat_spixel_init, n.label, n.problabel,n.seg_label,n.sp_label = \
             L.Python(python_param = dict(module = "input_patch_data_layer", layer = "InputRead", param_str = "TRAIN_1000000_" + str(num_spixels)),
                      include = dict(phase = 0),
-                     ntop = 5)
-
-        # the data of del 不知道对不对 ImageLabelmapData 已经不怎么用  mean_value 有三个值,但是如果命名一样会出问题
-
-        n.data, n.seg_label, n.sp_label = L.ImageLabelmapData( include = dict(phase = TRAIN ), transform_param =
-        dict(mirror = False, mean_value = [104.00699, 116.66877, 122.67892]), image_data_param = dict(
-            root_folder="./data/BSDS500/", source =  "./data/BSDS500/del_train.lst", batch_size =  1,
-            shuffle= True , new_height =  0,new_width =  0))
+                     ntop = 7)
 
     elif phase == 'TEST':
         n.img, n.spixel_init, n.feat_spixel_init, n.label, n.problabel = \
             L.Python(python_param = dict(module = "input_patch_data_layer", layer = "InputRead", param_str = "VAL_10_" + str(num_spixels)),
                      include = dict(phase = 1),
                      ntop = 5)
-        n.data, n.seg_label, n.sp_label = L.ImageLabelmapData(include=dict(phase=TRAIN), transform_param=
-        dict(mirror=False, mean_value=[104.00699, 116.66877, 122.67892]), image_data_param=dict(
-            root_folder="./data/BSDS500/", source="./data/BSDS500/del_vel.lst", batch_size=1,
-            shuffle=True, new_height=0, new_width=0))
     else:
         # im:10  ——表示对待识别样本进行数据增广的数量，该值的大小可自行定义。但一般会进行5次crop，将整幅图像分为多个flip。该值为10则表示会将待识别的样本分为10部分输入到网络进行识别。
         # 如果相对整幅图像进行识别而不进行图像数据增广，则可将该值设置为1.
@@ -441,9 +430,24 @@ def create_ssn_net(img_height, img_width,
                                        loss_param = dict(ignore_label = 255),
                                        loss_weight = 1.0)
 
+        # 这里需要获得超像素
+
+        n.spix_index = np.squeeze(net.blobs['new_spix_indices'].data).astype(int)
+
+        if enforce_connectivity:
+            segment_size = (n.img.shape[0] * n.img.shape[1]) / (int(num_spixels) * 1.0)
+            min_size = int(0.06 * segment_size)
+            max_size = int(3 * segment_size)
+            # 用于从标签中删除断开连接的小区域的helper函数   ps:这里我觉得应该是得到的超像素
+            n.spix_index = enforce_connectivity(n.spix_index[None, :, :], min_size, max_size)[0]
+
+        # 返回标记区域之间边界突出显示的图像。 这个应该相当于n.sp_label
+        n.spixel_image = get_spixel_image(n.img, n.spix_index)
+
+
         # the loss of del
         # superpixel_pooling
-        n.superpixel_pooling_out, n.superpixel_seg_label= L.SuperpixelPooling(n.conv_dsp, n.seg_label, n.sp_label,
+        n.superpixel_pooling_out, n.superpixel_seg_label= L.SuperpixelPooling(n.conv_dsp, n.seg_label, n.spixel_image,
                                                                               superpixel_pooling_param = dict(
                                                                                   pool_type=AVE))
         n.sim_loss = L.SimilarityLoss(n.superpixel_pooling_out,n.superpixel_seg_label, n.sp_label,
