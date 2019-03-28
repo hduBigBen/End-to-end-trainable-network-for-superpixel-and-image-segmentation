@@ -100,6 +100,7 @@ def convert_label(label):
 
     return label2, problabel
 
+# 测试的数据
 def fetch_and_transform_data(imgname,
                              data_type,
                              out_types,

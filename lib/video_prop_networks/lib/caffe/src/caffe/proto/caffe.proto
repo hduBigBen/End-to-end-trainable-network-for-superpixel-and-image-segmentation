@@ -322,7 +322,7 @@ message ParamSpec {
 // NOTE
 // Update the next available ID when you add a new LayerParameter field.
 //
-// LayerParameter next available layer-specific ID: 152 (last added: SimilarityLossParameter)
+// LayerParameter next available layer-specific ID: 153 (last added: EgbSegmentParameter)
 message LayerParameter {
   optional string name = 1; // the layer name
   optional string type = 2; // the layer type
@@ -440,6 +440,7 @@ message LayerParameter {
   optional NormalizeParameter norm_param = 149;
   optional SuperpixelPoolingParameter superpixel_pooling_param = 150;
   optional SimilarityLossParameter similarity_loss_param = 151;
+  optional EgbSegmentParameter egb_segment_param = 152;
 
 
 }

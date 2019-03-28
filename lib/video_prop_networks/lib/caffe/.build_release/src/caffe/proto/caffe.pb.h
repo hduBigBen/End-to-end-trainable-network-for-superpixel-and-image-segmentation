@@ -3527,6 +3527,15 @@ class LayerParameter : public ::google::protobuf::Message {
   inline ::caffe::SimilarityLossParameter* release_similarity_loss_param();
   inline void set_allocated_similarity_loss_param(::caffe::SimilarityLossParameter* similarity_loss_param);
 
+  // optional .caffe.EgbSegmentParameter egb_segment_param = 152;
+  inline bool has_egb_segment_param() const;
+  inline void clear_egb_segment_param();
+  static const int kEgbSegmentParamFieldNumber = 152;
+  inline const ::caffe::EgbSegmentParameter& egb_segment_param() const;
+  inline ::caffe::EgbSegmentParameter* mutable_egb_segment_param();
+  inline ::caffe::EgbSegmentParameter* release_egb_segment_param();
+  inline void set_allocated_egb_segment_param(::caffe::EgbSegmentParameter* egb_segment_param);
+
   // @@protoc_insertion_point(class_scope:caffe.LayerParameter)
  private:
   inline void set_has_name();
@@ -3665,6 +3674,8 @@ class LayerParameter : public ::google::protobuf::Message {
   inline void clear_has_superpixel_pooling_param();
   inline void set_has_similarity_loss_param();
   inline void clear_has_similarity_loss_param();
+  inline void set_has_egb_segment_param();
+  inline void clear_has_egb_segment_param();
 
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
 
@@ -3745,6 +3756,7 @@ class LayerParameter : public ::google::protobuf::Message {
   ::caffe::NormalizeParameter* norm_param_;
   ::caffe::SuperpixelPoolingParameter* superpixel_pooling_param_;
   ::caffe::SimilarityLossParameter* similarity_loss_param_;
+  ::caffe::EgbSegmentParameter* egb_segment_param_;
   int phase_;
   friend void  protobuf_AddDesc_caffe_2eproto();
   friend void protobuf_AssignDesc_caffe_2eproto();
@@ -19069,6 +19081,47 @@ inline void LayerParameter::set_allocated_similarity_loss_param(::caffe::Similar
     clear_has_similarity_loss_param();
   }
   // @@protoc_insertion_point(field_set_allocated:caffe.LayerParameter.similarity_loss_param)
+}
+
+// optional .caffe.EgbSegmentParameter egb_segment_param = 152;
+inline bool LayerParameter::has_egb_segment_param() const {
+  return (_has_bits_[2] & 0x00001000u) != 0;
+}
+inline void LayerParameter::set_has_egb_segment_param() {
+  _has_bits_[2] |= 0x00001000u;
+}
+inline void LayerParameter::clear_has_egb_segment_param() {
+  _has_bits_[2] &= ~0x00001000u;
+}
+inline void LayerParameter::clear_egb_segment_param() {
+  if (egb_segment_param_ != NULL) egb_segment_param_->::caffe::EgbSegmentParameter::Clear();
+  clear_has_egb_segment_param();
+}
+inline const ::caffe::EgbSegmentParameter& LayerParameter::egb_segment_param() const {
+  // @@protoc_insertion_point(field_get:caffe.LayerParameter.egb_segment_param)
+  return egb_segment_param_ != NULL ? *egb_segment_param_ : *default_instance_->egb_segment_param_;
+}
+inline ::caffe::EgbSegmentParameter* LayerParameter::mutable_egb_segment_param() {
+  set_has_egb_segment_param();
+  if (egb_segment_param_ == NULL) egb_segment_param_ = new ::caffe::EgbSegmentParameter;
+  // @@protoc_insertion_point(field_mutable:caffe.LayerParameter.egb_segment_param)
+  return egb_segment_param_;
+}
+inline ::caffe::EgbSegmentParameter* LayerParameter::release_egb_segment_param() {
+  clear_has_egb_segment_param();
+  ::caffe::EgbSegmentParameter* temp = egb_segment_param_;
+  egb_segment_param_ = NULL;
+  return temp;
+}
+inline void LayerParameter::set_allocated_egb_segment_param(::caffe::EgbSegmentParameter* egb_segment_param) {
+  delete egb_segment_param_;
+  egb_segment_param_ = egb_segment_param;
+  if (egb_segment_param) {
+    set_has_egb_segment_param();
+  } else {
+    clear_has_egb_segment_param();
+  }
+  // @@protoc_insertion_point(field_set_allocated:caffe.LayerParameter.egb_segment_param)
 }
 
 // -------------------------------------------------------------------

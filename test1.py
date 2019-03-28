@@ -176,7 +176,7 @@ def cnn_module(bottom, num_out):
                     convolution_param=dict(num_output= 64, kernel_size=1, stride=1, pad=0,
                                             weight_filler=dict(type='xavier', std=0.01),
                                             bias_filler=dict(type='constant', value=0)),
-                    param=[{'lr_mult': 10, 'decay_mult': 1}, {'lr_mult': 20, 'decay_mult': 0}])
+                    param=[{'lr_mult': 1, 'decay_mult': 1}, {'lr_mult': 2, 'decay_mult': 0}])
 
 
 
@@ -455,11 +455,7 @@ def create_ssn_net(img_height, img_width,
 
         # the loss of del
         # superpixel_pooling
-        # n.superpixel_pooling_out, n.superpixel_seg_label= L.SuperpixelPooling(n.conv_dsp, n.seg_label, n.new_spix_indices,
-        #                                                                       superpixel_pooling_param = dict(
-        #                                                                           pool_type= P.Pooling.AVE ))
-
-        n.superpixel_pooling_out, n.superpixel_seg_label = L.SuperpixelPooling(n.conv_dsp, n.seg_label, n.new_spix_indices,
+        n.superpixel_pooling_out, n.superpixel_seg_label = L.SuperpixelPooling(n.conv_dsp, n.seg_label, n.spixel_label,
                                                                                superpixel_pooling_param=dict(
                                                                                    pool_type=P.Pooling.AVE), ntop=2)
 
@@ -472,7 +468,9 @@ def create_ssn_net(img_height, img_width,
         n.new_spix_indices = compute_final_spixel_labels(n.final_pixel_assoc,
                                                          n.spixel_init,
                                                          num_spixels_h, num_spixels_w)
-#  NetSpec 是包含Tops（可以直接赋值作为属性）的集合。调用 NetSpec.to_proto 创建包含所有层(layers)的网络参数，这些层(layers)需要被赋值，并使用被赋值的名字。
+
+    #  NetSpec 是包含Tops（可以直接赋值作为属性）的集合。调用 NetSpec.to_proto 创建包含所有层(layers)的网络参数，
+    # 这些层(layers)需要被赋值，并使用被赋值的名字。
     return n.to_proto()
 
 
