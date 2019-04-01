@@ -428,7 +428,11 @@ def create_ssn_net(img_height, img_width,
         n.recon_label = decode_features(n.final_pixel_assoc, n.spixel_label, n.spixel_init,
                                         num_spixels_h, num_spixels_w, num_spixels, num_channels = 50)
 
-
+        # superpixel_pooling
+        n.superpixel_pooling_out, n.superpixel_seg_label = L.SuperpixelPooling(n.conv_dsp, n.seg_label,
+                                                                               n.new_spix_indices,
+                                                                               superpixel_pooling_param=dict(
+                                                                                   pool_type=P.Pooling.AVE), ntop=2)
         n.recon_label = L.ReLU(n.recon_label, in_place = True)
         n.recon_label2 = L.Power(n.recon_label, power_param = dict(shift = 1e-10))
         n.recon_label3 = normalize(n.recon_label2, 50)
@@ -454,11 +458,6 @@ def create_ssn_net(img_height, img_width,
 
 
         # the loss of del
-        # superpixel_pooling
-        n.superpixel_pooling_out, n.superpixel_seg_label = L.SuperpixelPooling(n.conv_dsp, n.seg_label, n.new_spix_indices,
-                                                                               superpixel_pooling_param=dict(
-                                                                                   pool_type=P.Pooling.AVE), ntop=2)
-
         n.sim_loss = L.SimilarityLoss(n.superpixel_pooling_out,n.superpixel_seg_label, n.sp_label,
                                       loss_weight = 1.0,similarity_loss_param = dict(sample_points = 1))
 
