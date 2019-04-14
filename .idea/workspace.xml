@@ -2,89 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="bd35b6f0-6687-41df-a28b-1d490e766e63" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/create_net_three_loss.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/fetch_and_transform_datacut.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TEST2.py" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/create_net.py" beforeDir="false" afterPath="$PROJECT_DIR$/create_net.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/fetch_and_transform_data.py" beforeDir="false" afterPath="$PROJECT_DIR$/fetch_and_transform_data.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/input_patch_data_layer.py" beforeDir="false" afterPath="$PROJECT_DIR$/input_patch_data_layer.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/video_prop_networks/lib/caffe/.build_release/cuda/src/caffe/layers/absval_layer.o" beforeDir="false" afterPath="$PROJECT_DIR$/lib/video_prop_networks/lib/caffe/.build_release/cuda/src/caffe/layers/absval_layer.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/video_prop_networks/lib/caffe/.build_release/cuda/src/caffe/layers/accuracy_layer.o" beforeDir="false" afterPath="$PROJECT_DIR$/lib/video_prop_networks/lib/caffe/.build_release/cuda/src/caffe/layers/accuracy_layer.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/video_prop_networks/lib/caffe/.build_release/cuda/src/caffe/layers/base_data_layer.o" beforeDir="false" afterPath="$PROJECT_DIR$/lib/video_prop_networks/lib/caffe/.build_release/cuda/src/caffe/layers/base_data_layer.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/video_prop_networks/lib/caffe/.build_release/cuda/src/caffe/layers/batch_norm_layer.o" beforeDir="false" afterPath="$PROJECT_DIR$/lib/video_prop_networks/lib/caffe/.build_release/cuda/src/caffe/layers/batch_norm_layer.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/video_prop_networks/lib/caffe/.build_release/cuda/src/caffe/layers/batch_reindex_layer.o" beforeDir="false" afterPath="$PROJECT_DIR$/lib/video_prop_networks/lib/caffe/.build_release/cuda/src/caffe/layers/batch_reindex_layer.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/video_prop_networks/lib/caffe/.build_release/cuda/src/caffe/layers/bias_layer.o" beforeDir="false" afterPath="$PROJECT_DIR$/lib/video_prop_networks/lib/caffe/.build_release/cuda/src/caffe/layers/bias_layer.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/video_prop_networks/lib/caffe/.build_release/cuda/src/caffe/layers/bnll_layer.o" beforeDir="false" afterPath="$PROJECT_DIR$/lib/video_prop_networks/lib/caffe/.build_release/cuda/src/caffe/layers/bnll_layer.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/video_prop_networks/lib/caffe/.build_release/cuda/src/caffe/layers/clip_layer.o" beforeDir="false" afterPath="$PROJECT_DIR$/lib/video_prop_networks/lib/caffe/.build_release/cuda/src/caffe/layers/clip_layer.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/video_prop_networks/lib/caffe/.build_release/cuda/src/caffe/layers/concat_layer.o" beforeDir="false" afterPath="$PROJECT_DIR$/lib/video_prop_networks/lib/caffe/.build_release/cuda/src/caffe/layers/concat_layer.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/video_prop_networks/lib/caffe/.build_release/cuda/src/caffe/layers/contrastive_loss_layer.o" beforeDir="false" afterPath="$PROJECT_DIR$/lib/video_prop_networks/lib/caffe/.build_release/cuda/src/caffe/layers/contrastive_loss_layer.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/video_prop_networks/lib/caffe/.build_release/cuda/src/caffe/layers/conv_layer.o" beforeDir="false" afterPath="$PROJECT_DIR$/lib/video_prop_networks/lib/caffe/.build_release/cuda/src/caffe/layers/conv_layer.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/video_prop_networks/lib/caffe/.build_release/cuda/src/caffe/layers/crop_layer.o" beforeDir="false" afterPath="$PROJECT_DIR$/lib/video_prop_networks/lib/caffe/.build_release/cuda/src/caffe/layers/crop_layer.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/video_prop_networks/lib/caffe/.build_release/cuda/src/caffe/layers/cudnn_conv_layer.o" beforeDir="false" afterPath="$PROJECT_DIR$/lib/video_prop_networks/lib/caffe/.build_release/cuda/src/caffe/layers/cudnn_conv_layer.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/video_prop_networks/lib/caffe/.build_release/cuda/src/caffe/layers/cudnn_deconv_layer.o" beforeDir="false" afterPath="$PROJECT_DIR$/lib/video_prop_networks/lib/caffe/.build_release/cuda/src/caffe/layers/cudnn_deconv_layer.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/video_prop_networks/lib/caffe/.build_release/cuda/src/caffe/layers/cudnn_lcn_layer.o" beforeDir="false" afterPath="$PROJECT_DIR$/lib/video_prop_networks/lib/caffe/.build_release/cuda/src/caffe/layers/cudnn_lcn_layer.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/video_prop_networks/lib/caffe/.build_release/cuda/src/caffe/layers/cudnn_lrn_layer.o" beforeDir="false" afterPath="$PROJECT_DIR$/lib/video_prop_networks/lib/caffe/.build_release/cuda/src/caffe/layers/cudnn_lrn_layer.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/video_prop_networks/lib/caffe/.build_release/cuda/src/caffe/layers/cudnn_pooling_layer.o" beforeDir="false" afterPath="$PROJECT_DIR$/lib/video_prop_networks/lib/caffe/.build_release/cuda/src/caffe/layers/cudnn_pooling_layer.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/video_prop_networks/lib/caffe/.build_release/cuda/src/caffe/layers/cudnn_relu_layer.o" beforeDir="false" afterPath="$PROJECT_DIR$/lib/video_prop_networks/lib/caffe/.build_release/cuda/src/caffe/layers/cudnn_relu_layer.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/video_prop_networks/lib/caffe/.build_release/cuda/src/caffe/layers/cudnn_sigmoid_layer.o" beforeDir="false" afterPath="$PROJECT_DIR$/lib/video_prop_networks/lib/caffe/.build_release/cuda/src/caffe/layers/cudnn_sigmoid_layer.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/video_prop_networks/lib/caffe/.build_release/cuda/src/caffe/layers/cudnn_softmax_layer.o" beforeDir="false" afterPath="$PROJECT_DIR$/lib/video_prop_networks/lib/caffe/.build_release/cuda/src/caffe/layers/cudnn_softmax_layer.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/video_prop_networks/lib/caffe/.build_release/cuda/src/caffe/layers/cudnn_tanh_layer.o" beforeDir="false" afterPath="$PROJECT_DIR$/lib/video_prop_networks/lib/caffe/.build_release/cuda/src/caffe/layers/cudnn_tanh_layer.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/video_prop_networks/lib/caffe/.build_release/cuda/src/caffe/layers/deconv_layer.o" beforeDir="false" afterPath="$PROJECT_DIR$/lib/video_prop_networks/lib/caffe/.build_release/cuda/src/caffe/layers/deconv_layer.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/video_prop_networks/lib/caffe/.build_release/cuda/src/caffe/layers/dropout_layer.o" beforeDir="false" afterPath="$PROJECT_DIR$/lib/video_prop_networks/lib/caffe/.build_release/cuda/src/caffe/layers/dropout_layer.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/video_prop_networks/lib/caffe/.build_release/cuda/src/caffe/layers/egb_segment_layer.o" beforeDir="false" afterPath="$PROJECT_DIR$/lib/video_prop_networks/lib/caffe/.build_release/cuda/src/caffe/layers/egb_segment_layer.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/video_prop_networks/lib/caffe/.build_release/cuda/src/caffe/layers/eltwise_layer.o" beforeDir="false" afterPath="$PROJECT_DIR$/lib/video_prop_networks/lib/caffe/.build_release/cuda/src/caffe/layers/eltwise_layer.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/video_prop_networks/lib/caffe/.build_release/cuda/src/caffe/layers/elu_layer.o" beforeDir="false" afterPath="$PROJECT_DIR$/lib/video_prop_networks/lib/caffe/.build_release/cuda/src/caffe/layers/elu_layer.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/video_prop_networks/lib/caffe/.build_release/cuda/src/caffe/layers/embed_layer.o" beforeDir="false" afterPath="$PROJECT_DIR$/lib/video_prop_networks/lib/caffe/.build_release/cuda/src/caffe/layers/embed_layer.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/video_prop_networks/lib/caffe/.build_release/cuda/src/caffe/layers/euclidean_loss_layer.o" beforeDir="false" afterPath="$PROJECT_DIR$/lib/video_prop_networks/lib/caffe/.build_release/cuda/src/caffe/layers/euclidean_loss_layer.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/video_prop_networks/lib/caffe/.build_release/cuda/src/caffe/layers/exp_layer.o" beforeDir="false" afterPath="$PROJECT_DIR$/lib/video_prop_networks/lib/caffe/.build_release/cuda/src/caffe/layers/exp_layer.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/video_prop_networks/lib/caffe/.build_release/cuda/src/caffe/layers/filter_layer.o" beforeDir="false" afterPath="$PROJECT_DIR$/lib/video_prop_networks/lib/caffe/.build_release/cuda/src/caffe/layers/filter_layer.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/video_prop_networks/lib/caffe/.build_release/cuda/src/caffe/layers/hdf5_data_layer.o" beforeDir="false" afterPath="$PROJECT_DIR$/lib/video_prop_networks/lib/caffe/.build_release/cuda/src/caffe/layers/hdf5_data_layer.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/video_prop_networks/lib/caffe/.build_release/cuda/src/caffe/layers/hdf5_output_layer.o" beforeDir="false" afterPath="$PROJECT_DIR$/lib/video_prop_networks/lib/caffe/.build_release/cuda/src/caffe/layers/hdf5_output_layer.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/video_prop_networks/lib/caffe/.build_release/cuda/src/caffe/layers/im2col_layer.o" beforeDir="false" afterPath="$PROJECT_DIR$/lib/video_prop_networks/lib/caffe/.build_release/cuda/src/caffe/layers/im2col_layer.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/video_prop_networks/lib/caffe/.build_release/cuda/src/caffe/layers/inner_product_layer.o" beforeDir="false" afterPath="$PROJECT_DIR$/lib/video_prop_networks/lib/caffe/.build_release/cuda/src/caffe/layers/inner_product_layer.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/video_prop_networks/lib/caffe/.build_release/cuda/src/caffe/layers/log_layer.o" beforeDir="false" afterPath="$PROJECT_DIR$/lib/video_prop_networks/lib/caffe/.build_release/cuda/src/caffe/layers/log_layer.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/video_prop_networks/lib/caffe/.build_release/cuda/src/caffe/layers/loss_without_softmax_layer.o" beforeDir="false" afterPath="$PROJECT_DIR$/lib/video_prop_networks/lib/caffe/.build_release/cuda/src/caffe/layers/loss_without_softmax_layer.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/video_prop_networks/lib/caffe/.build_release/cuda/src/caffe/layers/lrn_layer.o" beforeDir="false" afterPath="$PROJECT_DIR$/lib/video_prop_networks/lib/caffe/.build_release/cuda/src/caffe/layers/lrn_layer.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/video_prop_networks/lib/caffe/.build_release/cuda/src/caffe/layers/lstm_unit_layer.o" beforeDir="false" afterPath="$PROJECT_DIR$/lib/video_prop_networks/lib/caffe/.build_release/cuda/src/caffe/layers/lstm_unit_layer.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/video_prop_networks/lib/caffe/.build_release/cuda/src/caffe/layers/mvn_layer.o" beforeDir="false" afterPath="$PROJECT_DIR$/lib/video_prop_networks/lib/caffe/.build_release/cuda/src/caffe/layers/mvn_layer.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/video_prop_networks/lib/caffe/.build_release/cuda/src/caffe/layers/normalize_layer.o" beforeDir="false" afterPath="$PROJECT_DIR$/lib/video_prop_networks/lib/caffe/.build_release/cuda/src/caffe/layers/normalize_layer.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/video_prop_networks/lib/caffe/.build_release/cuda/src/caffe/layers/passoc_layer.o" beforeDir="false" afterPath="$PROJECT_DIR$/lib/video_prop_networks/lib/caffe/.build_release/cuda/src/caffe/layers/passoc_layer.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/video_prop_networks/lib/caffe/.build_release/cuda/src/caffe/layers/pixel_feature_layer.o" beforeDir="false" afterPath="$PROJECT_DIR$/lib/video_prop_networks/lib/caffe/.build_release/cuda/src/caffe/layers/pixel_feature_layer.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/video_prop_networks/lib/caffe/.build_release/cuda/src/caffe/layers/pooling_layer.o" beforeDir="false" afterPath="$PROJECT_DIR$/lib/video_prop_networks/lib/caffe/.build_release/cuda/src/caffe/layers/pooling_layer.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/video_prop_networks/lib/caffe/.build_release/cuda/src/caffe/layers/power_layer.o" beforeDir="false" afterPath="$PROJECT_DIR$/lib/video_prop_networks/lib/caffe/.build_release/cuda/src/caffe/layers/power_layer.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/video_prop_networks/lib/caffe/.build_release/cuda/src/caffe/layers/prelu_layer.o" beforeDir="false" afterPath="$PROJECT_DIR$/lib/video_prop_networks/lib/caffe/.build_release/cuda/src/caffe/layers/prelu_layer.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/video_prop_networks/lib/caffe/.build_release/cuda/src/caffe/layers/recurrent_layer.o" beforeDir="false" afterPath="$PROJECT_DIR$/lib/video_prop_networks/lib/caffe/.build_release/cuda/src/caffe/layers/recurrent_layer.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/video_prop_networks/lib/caffe/.build_release/cuda/src/caffe/layers/reduction_layer.o" beforeDir="false" afterPath="$PROJECT_DIR$/lib/video_prop_networks/lib/caffe/.build_release/cuda/src/caffe/layers/reduction_layer.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/video_prop_networks/lib/caffe/.build_release/cuda/src/caffe/layers/rel_to_abs_index_layer.o" beforeDir="false" afterPath="$PROJECT_DIR$/lib/video_prop_networks/lib/caffe/.build_release/cuda/src/caffe/layers/rel_to_abs_index_layer.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/video_prop_networks/lib/caffe/.build_release/cuda/src/caffe/layers/relu_layer.o" beforeDir="false" afterPath="$PROJECT_DIR$/lib/video_prop_networks/lib/caffe/.build_release/cuda/src/caffe/layers/relu_layer.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/video_prop_networks/lib/caffe/.build_release/cuda/src/caffe/layers/scale_layer.o" beforeDir="false" afterPath="$PROJECT_DIR$/lib/video_prop_networks/lib/caffe/.build_release/cuda/src/caffe/layers/scale_layer.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/video_prop_networks/lib/caffe/.build_release/cuda/src/caffe/layers/sigmoid_cross_entropy_loss_layer.o" beforeDir="false" afterPath="$PROJECT_DIR$/lib/video_prop_networks/lib/caffe/.build_release/cuda/src/caffe/layers/sigmoid_cross_entropy_loss_layer.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/video_prop_networks/lib/caffe/.build_release/cuda/src/caffe/layers/sigmoid_layer.o" beforeDir="false" afterPath="$PROJECT_DIR$/lib/video_prop_networks/lib/caffe/.build_release/cuda/src/caffe/layers/sigmoid_layer.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/video_prop_networks/lib/caffe/.build_release/cuda/src/caffe/layers/silence_layer.o" beforeDir="false" afterPath="$PROJECT_DIR$/lib/video_prop_networks/lib/caffe/.build_release/cuda/src/caffe/layers/silence_layer.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/video_prop_networks/lib/caffe/.build_release/cuda/src/caffe/layers/slice_layer.o" beforeDir="false" afterPath="$PROJECT_DIR$/lib/video_prop_networks/lib/caffe/.build_release/cuda/src/caffe/layers/slice_layer.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/video_prop_networks/lib/caffe/.build_release/cuda/src/caffe/layers/smear_layer.o" beforeDir="false" afterPath="$PROJECT_DIR$/lib/video_prop_networks/lib/caffe/.build_release/cuda/src/caffe/layers/smear_layer.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/video_prop_networks/lib/caffe/.build_release/cuda/src/caffe/layers/softmax_layer.o" beforeDir="false" afterPath="$PROJECT_DIR$/lib/video_prop_networks/lib/caffe/.build_release/cuda/src/caffe/layers/softmax_layer.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/video_prop_networks/lib/caffe/.build_release/cuda/src/caffe/layers/softmax_loss_layer.o" beforeDir="false" afterPath="$PROJECT_DIR$/lib/video_prop_networks/lib/caffe/.build_release/cuda/src/caffe/layers/softmax_loss_layer.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/video_prop_networks/lib/caffe/.build_release/cuda/src/caffe/layers/spixel_feature2_layer.o" beforeDir="false" afterPath="$PROJECT_DIR$/lib/video_prop_networks/lib/caffe/.build_release/cuda/src/caffe/layers/spixel_feature2_layer.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/video_prop_networks/lib/caffe/.build_release/cuda/src/caffe/layers/spixel_feature_layer.o" beforeDir="false" afterPath="$PROJECT_DIR$/lib/video_prop_networks/lib/caffe/.build_release/cuda/src/caffe/layers/spixel_feature_layer.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/video_prop_networks/lib/caffe/.build_release/cuda/src/caffe/layers/split_layer.o" beforeDir="false" afterPath="$PROJECT_DIR$/lib/video_prop_networks/lib/caffe/.build_release/cuda/src/caffe/layers/split_layer.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/video_prop_networks/lib/caffe/.build_release/cuda/src/caffe/layers/swish_layer.o" beforeDir="false" afterPath="$PROJECT_DIR$/lib/video_prop_networks/lib/caffe/.build_release/cuda/src/caffe/layers/swish_layer.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/video_prop_networks/lib/caffe/.build_release/cuda/src/caffe/layers/tanh_layer.o" beforeDir="false" afterPath="$PROJECT_DIR$/lib/video_prop_networks/lib/caffe/.build_release/cuda/src/caffe/layers/tanh_layer.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/video_prop_networks/lib/caffe/.build_release/cuda/src/caffe/layers/threshold_layer.o" beforeDir="false" afterPath="$PROJECT_DIR$/lib/video_prop_networks/lib/caffe/.build_release/cuda/src/caffe/layers/threshold_layer.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/video_prop_networks/lib/caffe/.build_release/cuda/src/caffe/layers/tile_layer.o" beforeDir="false" afterPath="$PROJECT_DIR$/lib/video_prop_networks/lib/caffe/.build_release/cuda/src/caffe/layers/tile_layer.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/video_prop_networks/lib/caffe/.build_release/cuda/src/caffe/solvers/adadelta_solver.o" beforeDir="false" afterPath="$PROJECT_DIR$/lib/video_prop_networks/lib/caffe/.build_release/cuda/src/caffe/solvers/adadelta_solver.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/video_prop_networks/lib/caffe/.build_release/cuda/src/caffe/solvers/adagrad_solver.o" beforeDir="false" afterPath="$PROJECT_DIR$/lib/video_prop_networks/lib/caffe/.build_release/cuda/src/caffe/solvers/adagrad_solver.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/video_prop_networks/lib/caffe/.build_release/cuda/src/caffe/solvers/adam_solver.o" beforeDir="false" afterPath="$PROJECT_DIR$/lib/video_prop_networks/lib/caffe/.build_release/cuda/src/caffe/solvers/adam_solver.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/video_prop_networks/lib/caffe/.build_release/cuda/src/caffe/solvers/nesterov_solver.o" beforeDir="false" afterPath="$PROJECT_DIR$/lib/video_prop_networks/lib/caffe/.build_release/cuda/src/caffe/solvers/nesterov_solver.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/video_prop_networks/lib/caffe/.build_release/cuda/src/caffe/solvers/rmsprop_solver.o" beforeDir="false" afterPath="$PROJECT_DIR$/lib/video_prop_networks/lib/caffe/.build_release/cuda/src/caffe/solvers/rmsprop_solver.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/video_prop_networks/lib/caffe/.build_release/cuda/src/caffe/solvers/sgd_solver.o" beforeDir="false" afterPath="$PROJECT_DIR$/lib/video_prop_networks/lib/caffe/.build_release/cuda/src/caffe/solvers/sgd_solver.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/video_prop_networks/lib/caffe/.build_release/cuda/src/caffe/util/im2col.o" beforeDir="false" afterPath="$PROJECT_DIR$/lib/video_prop_networks/lib/caffe/.build_release/cuda/src/caffe/util/im2col.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/video_prop_networks/lib/caffe/.build_release/cuda/src/caffe/util/interp.o" beforeDir="false" afterPath="$PROJECT_DIR$/lib/video_prop_networks/lib/caffe/.build_release/cuda/src/caffe/util/interp.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/video_prop_networks/lib/caffe/.build_release/cuda/src/caffe/util/math_functions.o" beforeDir="false" afterPath="$PROJECT_DIR$/lib/video_prop_networks/lib/caffe/.build_release/cuda/src/caffe/util/math_functions.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/video_prop_networks/lib/caffe/.build_release/lib/libcaffe.a" beforeDir="false" afterPath="$PROJECT_DIR$/lib/video_prop_networks/lib/caffe/.build_release/lib/libcaffe.a" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/video_prop_networks/lib/caffe/.build_release/lib/libcaffe.so.1.0.0" beforeDir="false" afterPath="$PROJECT_DIR$/lib/video_prop_networks/lib/caffe/.build_release/lib/libcaffe.so.1.0.0" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/video_prop_networks/lib/caffe/python/caffe/_caffe.so" beforeDir="false" afterPath="$PROJECT_DIR$/lib/video_prop_networks/lib/caffe/python/caffe/_caffe.so" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test1.py" beforeDir="false" afterPath="$PROJECT_DIR$/test1.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test_net.py" beforeDir="false" afterPath="$PROJECT_DIR$/test_net.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/train_ssn.py" beforeDir="false" afterPath="$PROJECT_DIR$/train_ssn.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test1.py" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -110,23 +34,25 @@
       <usages-collector id="statistics.file.extensions.open">
         <counts>
           <entry key="md" value="1" />
-          <entry key="py" value="63" />
+          <entry key="py" value="71" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
           <entry key="Markdown" value="1" />
-          <entry key="Python" value="63" />
+          <entry key="Python" value="71" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="py" value="1260" />
+          <entry key="dummy" value="4" />
+          <entry key="py" value="1261" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="Python" value="1260" />
+          <entry key="PLAIN_TEXT" value="4" />
+          <entry key="Python" value="1261" />
         </counts>
       </usages-collector>
     </session>
@@ -136,8 +62,20 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/fetch_and_transform_data.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="717">
-              <caret line="266" column="42" selection-start-line="266" selection-start-column="42" selection-end-line="266" selection-end-column="42" />
+            <state relative-caret-position="334">
+              <caret line="237" column="43" lean-forward="true" selection-end-line="269" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/create_solver.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="589">
+              <caret line="45" column="30" lean-forward="true" selection-start-line="45" selection-start-column="30" selection-end-line="45" selection-end-column="30" />
+              <folding>
+                <element signature="e#221#236#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -145,29 +83,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/train_ssn.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="162">
-              <caret line="44" column="38" selection-start-line="44" selection-start-column="38" selection-end-line="44" selection-end-column="38" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/lib/video_prop_networks/lib/caffe/python/caffe/io.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2940">
-              <caret line="199" selection-start-line="199" selection-end-line="199" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/input_patch_data_layer.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="612">
-              <caret line="121" column="46" lean-forward="true" selection-start-line="121" selection-start-column="46" selection-end-line="121" selection-end-column="46" />
-              <folding>
-                <element signature="e#399#408#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="330">
+              <caret line="30" column="16" lean-forward="true" selection-start-line="30" selection-start-column="16" selection-end-line="30" selection-end-column="16" />
             </state>
           </provider>
         </entry>
@@ -175,8 +92,26 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/create_net.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="380">
-              <caret line="318" column="65" selection-start-line="318" selection-start-column="65" selection-end-line="318" selection-end-column="65" />
+            <state relative-caret-position="454">
+              <caret line="463" column="59" selection-start-line="463" selection-start-column="59" selection-end-line="463" selection-end-column="59" />
+              <folding>
+                <element signature="e#24#48#0" expanded="true" />
+                <element signature="e#5186#8036#0" />
+                <element signature="e#8229#8711#0" />
+                <element signature="e#8895#9468#0" />
+                <element signature="e#9620#12219#0" />
+                <element signature="e#12382#13026#0" />
+                <element signature="e#20703#20714#0" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/create_net_three_loss.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="822">
+              <caret line="508" lean-forward="true" selection-start-line="508" selection-end-line="508" />
               <folding>
                 <element signature="e#24#48#0" expanded="true" />
                 <element signature="e#5186#8036#0" />
@@ -189,25 +124,14 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/test_net.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1617">
-              <caret line="151" lean-forward="true" selection-start-line="151" selection-end-line="151" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/test1.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-165">
-              <caret line="304" column="83" selection-start-line="304" selection-start-column="74" selection-end-line="304" selection-end-column="83" />
-            </state>
-          </provider>
-        </entry>
-      </file>
     </leaf>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+      </list>
+    </option>
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
@@ -222,6 +146,7 @@
       <find>plot_single_scale</find>
       <find>pca</find>
       <find>data</find>
+      <find>position_color_loss</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -233,19 +158,22 @@
         <option value="$PROJECT_DIR$/config.py" />
         <option value="$PROJECT_DIR$/create_solver.py" />
         <option value="$PROJECT_DIR$/../del/examples/del/test_context_seg.py" />
-        <option value="$PROJECT_DIR$/test1.py" />
-        <option value="$PROJECT_DIR$/fetch_and_transform_data.py" />
         <option value="$PROJECT_DIR$/train_ssn.py" />
         <option value="$PROJECT_DIR$/test_net.py" />
         <option value="$PROJECT_DIR$/input_patch_data_layer.py" />
+        <option value="$PROJECT_DIR$/test1.py" />
+        <option value="$PROJECT_DIR$/fetch_and_transform_data.py" />
+        <option value="$PROJECT_DIR$/create_net_three_loss.py" />
+        <option value="$PROJECT_DIR$/fetch_and_transform_cut.py" />
+        <option value="$PROJECT_DIR$/fetch_and_transform_datacut.py" />
         <option value="$PROJECT_DIR$/create_net.py" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds">
-    <option name="x" value="633" />
-    <option name="y" value="113" />
-    <option name="width" value="1370" />
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="121" />
+    <option name="y" value="82" />
+    <option name="width" value="843" />
     <option name="height" value="1032" />
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
@@ -339,10 +267,10 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="633" y="113" width="1370" height="1032" extended-state="0" />
+    <frame x="51" y="-4" width="1869" height="1084" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.19821826" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.17118093" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -387,13 +315,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/utils.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1350">
-          <caret line="95" column="4" selection-start-line="95" selection-start-column="4" selection-end-line="95" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/../del/examples/del/test_context_seg.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="975">
@@ -422,27 +343,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/config.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="21" selection-start-column="21" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file:///usr/local/lib/python2.7/dist-packages/skimage/color/colorconv.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-430">
           <caret line="1007" column="4" selection-start-line="1007" selection-start-column="4" selection-end-line="1007" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/init_caffe.py">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/create_solver.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="569">
-          <caret line="52" column="15" selection-start-line="52" selection-start-column="15" selection-end-line="52" selection-end-column="15" />
         </state>
       </provider>
     </entry>
@@ -469,46 +373,35 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/test1.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-165">
+        <state relative-caret-position="15">
           <caret line="304" column="83" selection-start-line="304" selection-start-column="74" selection-end-line="304" selection-end-column="83" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/train_ssn.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="162">
-          <caret line="44" column="38" selection-start-line="44" selection-start-column="38" selection-end-line="44" selection-end-column="38" />
-        </state>
-      </provider>
+    <entry file="file://$PROJECT_DIR$/TEST2.py">
+      <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/test_net.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1617">
-          <caret line="151" lean-forward="true" selection-start-line="151" selection-end-line="151" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/input_patch_data_layer.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="612">
-          <caret line="121" column="46" lean-forward="true" selection-start-line="121" selection-start-column="46" selection-end-line="121" selection-end-column="46" />
-          <folding>
-            <element signature="e#399#408#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="240">
+          <caret line="34" lean-forward="true" selection-start-line="34" selection-end-line="34" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/fetch_and_transform_data.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="717">
-          <caret line="266" column="42" selection-start-line="266" selection-start-column="42" selection-end-line="266" selection-end-column="42" />
+        <state relative-caret-position="334">
+          <caret line="237" column="43" lean-forward="true" selection-end-line="269" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/create_net.py">
+    <entry file="file://$PROJECT_DIR$/init_caffe.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/create_net_three_loss.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="380">
-          <caret line="318" column="65" selection-start-line="318" selection-start-column="65" selection-end-line="318" selection-end-column="65" />
+        <state relative-caret-position="822">
+          <caret line="508" lean-forward="true" selection-start-line="508" selection-end-line="508" />
           <folding>
             <element signature="e#24#48#0" expanded="true" />
             <element signature="e#5186#8036#0" />
@@ -516,6 +409,77 @@
             <element signature="e#8895#9468#0" />
             <element signature="e#9620#12219#0" />
             <element signature="e#12382#13026#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/fetch_and_transform_datacut.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1249">
+          <caret line="241" column="45" selection-start-line="241" selection-start-column="45" selection-end-line="241" selection-end-column="45" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/utils.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="514">
+          <caret line="95" column="4" selection-start-line="95" selection-start-column="4" selection-end-line="95" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="21" selection-start-column="21" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/loss_functions.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="559">
+          <caret line="243" lean-forward="true" selection-start-line="243" selection-end-line="243" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/input_patch_data_layer.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-356">
+          <caret line="121" column="46" lean-forward="true" selection-start-line="121" selection-start-column="46" selection-end-line="121" selection-end-column="46" />
+          <folding>
+            <element signature="e#399#408#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/create_solver.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="589">
+          <caret line="45" column="30" lean-forward="true" selection-start-line="45" selection-start-column="30" selection-end-line="45" selection-end-column="30" />
+          <folding>
+            <element signature="e#221#236#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/train_ssn.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="330">
+          <caret line="30" column="16" lean-forward="true" selection-start-line="30" selection-start-column="16" selection-end-line="30" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/create_net.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="454">
+          <caret line="463" column="59" selection-start-line="463" selection-start-column="59" selection-end-line="463" selection-end-column="59" />
+          <folding>
+            <element signature="e#24#48#0" expanded="true" />
+            <element signature="e#5186#8036#0" />
+            <element signature="e#8229#8711#0" />
+            <element signature="e#8895#9468#0" />
+            <element signature="e#9620#12219#0" />
+            <element signature="e#12382#13026#0" />
+            <element signature="e#20703#20714#0" />
           </folding>
         </state>
       </provider>
