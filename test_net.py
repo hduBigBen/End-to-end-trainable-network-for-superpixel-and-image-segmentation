@@ -44,7 +44,7 @@ def compute_spixels(data_type, n_spixels, num_steps,
             min_size = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 
         for j in range(len(min_size)):
-            new_save_root = os.path.join(save_root, 'threshold_{:.2f}_{}'.format(threshold, min_size[j]))
+            new_save_root = os.path.join(out_folder, 'threshold_{:.2f}_{}'.format(threshold, min_size[j]))
             if not os.path.exists(new_save_root):
                 os.mkdir(new_save_root)
 
@@ -68,8 +68,8 @@ def compute_spixels(data_type, n_spixels, num_steps,
                     dinputs['feat_spixel_init'] = feat_spixel_initmap
 
                     # 新加
-                    dinputs['bound_param'].data[...] = threshold
-                    dinputs['minsize_param'].data[...] = min_size[j]
+                    dinputs['bound_param'] = threshold
+                    dinputs['minsize_param'] = min_size[j]
 
 
                     pos_scale_w = (1.0 * num_spixels_w) / (float(p_scale) * width)
@@ -85,10 +85,20 @@ def compute_spixels(data_type, n_spixels, num_steps,
                     else:
                         net = initialize_net_weight(net)
 
-                    num_spixels = int(num_spixels_w * num_spixels_h)
-                    result = net.forward_all(**dinputs)
+                        net.blobs['img'] = inputs['img']
+                        net.blobs['spixel_init'] = spixel_initmap
+                        net.blobs['feat_spixel_init'] = feat_spixel_initmap
+                        net.blobs['bound_param'].data[...] = threshold
+                        net.blobs['minsize_param'].data[...] = min_size[j]
 
-                    # given_img = fromimage(Image.open(IMG_FOLDER[data_type] + imgname + '.jpg'))
+                    num_spixels = int(num_spixels_w * num_spixels_h)
+                    # result = net.forward_all(**dinputs)
+                    result = net.forward()
+
+
+
+
+                    given_img = fromimage(Image.open(IMG_FOLDER[data_type] + imgname + '.jpg'))
                     # spix_index = np.squeeze(net.blobs['new_spix_indices'].data).astype(int)
                     #
                     # if enforce_connectivity:
@@ -98,12 +108,22 @@ def compute_spixels(data_type, n_spixels, num_steps,
                     #     spix_index = enforce_connectivity(spix_index[None, :, :], min_size, max_size)[0]
                     #
                     # spixel_image = get_spixel_image(given_img, spix_index)
-                    out3 = net.blobs['segmentation'].data[0].copy()
-                    out3 = out3.transpose((1, 2, 0)).astype(dtype=np.uint16)
-                    out_img_file = out_folder + imgname + '_bdry.jpg'
-                    imsave(out_img_file, out3)
-                    out_file = out_folder + imgname + '.npy'
-                    np.save(out_file, out3)
+
+
+                    # 保存mat格式
+                    out2 = net.blobs['segmentation'].data[0].copy()
+                    out2 = out2.transpose((1, 2, 0)).astype(dtype=np.uint16)
+                    sio.savemat(new_save_root + '/' + imgname + '.mat', {'Segmentation': out2})
+
+                    # 保存jsp格式
+                    out3 = np.squeeze(net.blobs['segmentation'].data).astype(int)
+                    sge_image = get_spixel_image(given_img, out3)
+                    out_img_file = new_save_root + '/' + imgname + '.jpg'
+                    imsave(out_img_file, sge_image)
+
+
+
+
 
 
     return

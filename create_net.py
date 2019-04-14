@@ -296,16 +296,16 @@ def create_ssn_net(img_height, img_width,
     n = caffe.NetSpec()
 
     if phase == 'TRAIN':
-        n.img, n.spixel_init, n.feat_spixel_init, n.label, n.problabel,n.seg_label,n.sp_label = \
+        n.img, n.spixel_init, n.feat_spixel_init, n.label, n.problabel, n.seg_label = \
             L.Python(python_param = dict(module = "input_patch_data_layer", layer = "InputRead", param_str = "TRAIN_1000000_" + str(num_spixels)),
                      include = dict(phase = 0),
-                     ntop = 7)
+                     ntop = 6)
 
     elif phase == 'TEST':
-        n.img, n.spixel_init, n.feat_spixel_init, n.label, n.problabel, n.seg_label, n.sp_label= \
+        n.img, n.spixel_init, n.feat_spixel_init, n.label, n.problabel, n.seg_label= \
             L.Python(python_param = dict(module = "input_patch_data_layer", layer = "InputRead", param_str = "VAL_10_" + str(num_spixels)),
                      include = dict(phase = 1),
-                     ntop = 7)
+                     ntop = 6)
     else:
         # im:10  ——表示对待识别样本进行数据增广的数量，该值的大小可自行定义。但一般会进行5次crop，将整幅图像分为多个flip。该值为10则表示会将待识别的样本分为10部分输入到网络进行识别。
         # 如果相对整幅图像进行识别而不进行图像数据增广，则可将该值设置为1.
@@ -315,6 +315,8 @@ def create_ssn_net(img_height, img_width,
         n.img = L.Input(shape=[dict(dim=[1, 3, img_height, img_width])])
         n.spixel_init = L.Input(shape=[dict(dim=[1, 1, img_height, img_width])])
         n.feat_spixel_init = L.Input(shape=[dict(dim=[1, 1, img_height, img_width])])
+        n.bound_param = L.Input(shape=[dict(dim=[1, 1, 1, 1])])
+        n.minsize_param = L.Input(shape=[dict(dim=[1, 1, 1, 1])])
 
     # 我也不知道这里怎么得出pixel_features
     # lib/video_prop_networks/lib/caffe/src/caffe/layers
@@ -458,8 +460,8 @@ def create_ssn_net(img_height, img_width,
 
 
         # the loss of del
-        n.sim_loss = L.SimilarityLoss(n.superpixel_pooling_out,n.superpixel_seg_label, n.sp_label,
-                                      loss_weight = 1.0,similarity_loss_param = dict(sample_points = 1))
+        n.sim_loss = L.SimilarityLoss(n.superpixel_pooling_out,n.superpixel_seg_label, n.new_spix_indices,
+                                      loss_weight = 1.0, similarity_loss_param = dict(sample_points = 1))
 
 
 
@@ -467,6 +469,8 @@ def create_ssn_net(img_height, img_width,
         n.new_spix_indices = compute_final_spixel_labels(n.final_pixel_assoc,
                                                          n.spixel_init,
                                                          num_spixels_h, num_spixels_w)
+        n.segmentation = L.EgbSegment(n.conv_dsp, n.new_spix_indices, n.bound_param, n.minsize_param,
+                                      egb_segment_param=dict(bound=3, min_size=10))
 #  NetSpec 是包含Tops（可以直接赋值作为属性）的集合。调用 NetSpec.to_proto 创建包含所有层(layers)的网络参数，这些层(layers)需要被赋值，并使用被赋值的名字。
     return n.to_proto()
 

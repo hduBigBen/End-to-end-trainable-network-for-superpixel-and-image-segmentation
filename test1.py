@@ -296,7 +296,7 @@ def create_ssn_net(img_height, img_width,
     n = caffe.NetSpec()
 
     if phase == 'TRAIN':
-        n.img, n.spixel_init, n.feat_spixel_init, n.label, n.problabel,n.seg_label,n.sp_label = \
+        n.img, n.spixel_init, n.feat_spixel_init, n.label, n.problabel, n.seg_label, n.sp_label = \
             L.Python(python_param = dict(module = "input_patch_data_layer", layer = "InputRead", param_str = "TRAIN_1000000_" + str(num_spixels)),
                      include = dict(phase = 0),
                      ntop = 7)
