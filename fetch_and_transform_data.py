@@ -262,7 +262,7 @@ def fetch_and_transform_patch_data(imgname,
         if in_name == 'problabel':
             inputs['problabel'] = problabel_cropped
         if in_name == 'seg_label':
-            inputs['seg_label'] = out_sort_gt
+            inputs['seg_label'] = gtseg_cropped
         # if in_name == 'sp_label':
         #     inputs['sp_label'] = out_sp_gt
 
