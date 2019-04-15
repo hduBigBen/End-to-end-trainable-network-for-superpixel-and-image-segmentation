@@ -68,8 +68,19 @@ def compute_spixels(data_type, n_spixels, num_steps,
             else:
                 net = initialize_net_weight(net)
 
+            threshold = 1
+            min_size = 2
+
+            net.blobs['img'] = inputs['img']
+            net.blobs['spixel_init'] = spixel_initmap
+            net.blobs['feat_spixel_init'] = feat_spixel_initmap
+            net.blobs['bound_param'].data[...] = threshold
+            net.blobs['minsize_param'].data[...] = min_size
+
+
             num_spixels = int(num_spixels_w * num_spixels_h)
-            result = net.forward_all(**dinputs)
+            # result = net.forward_all(**dinputs)
+            result = net.forward()
 
             given_img = fromimage(Image.open(IMG_FOLDER[data_type] + imgname + '.jpg'))
             spix_index = np.squeeze(net.blobs['new_spix_indices'].data).astype(int)
