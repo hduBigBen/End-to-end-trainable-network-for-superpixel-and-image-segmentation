@@ -414,7 +414,7 @@ def create_ssn_net(img_height, img_width,
         n.recon_feat2 = L.Smear(n.new_spixel_feat, n.new_spix_indices,
                                 propagate_down = [True, False])
         n.loss1, n.loss2 = position_color_loss(n.recon_feat2, n.pixel_features,
-                                               pos_weight = 0.0001,
+                                               pos_weight = 0.001,
                                                col_weight = 0.0)
 
 
@@ -463,7 +463,7 @@ def create_ssn_net(img_height, img_width,
 
         # the loss of del
         n.sim_loss = L.SimilarityLoss(n.superpixel_pooling_out,n.superpixel_seg_label, n.new_spix_indices,
-                                      loss_weight = 0.001, similarity_loss_param = dict(sample_points = 1))
+                                      loss_weight = 0.01, similarity_loss_param = dict(sample_points = 1))
 
 
 
