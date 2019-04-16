@@ -31,7 +31,7 @@ def train_net(l_rate, num_steps, caffe_model = None):
     # Net params
     patch_height = TRAIN_PATCH_WIDTH
     patch_width = TRAIN_PATCH_HEIGHT
-    num_spixels = 2300
+    num_spixels = 100
     spixel_initmap, feat_spixel_initmap, num_spixels_w, num_spixels_h = \
         get_spixel_init(num_spixels,
                         patch_width,
