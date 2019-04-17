@@ -463,7 +463,7 @@ def create_ssn_net(img_height, img_width,
 
         # the loss of del
         n.sim_loss = L.SimilarityLoss(n.superpixel_pooling_out,n.superpixel_seg_label, n.new_spix_indices,
-                                      loss_weight = 1, similarity_loss_param = dict(sample_points = 1))
+                                      loss_weight = 0, similarity_loss_param = dict(sample_points = 1))
 
 
 
