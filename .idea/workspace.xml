@@ -1,7 +1,108 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="bd35b6f0-6687-41df-a28b-1d490e766e63" name="Default Changelist" comment="" />
+    <list default="true" id="bd35b6f0-6687-41df-a28b-1d490e766e63" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/DELandSSN.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/video_prop_networks/lib/caffe/.build_release/cuda/src/caffe/layers/absval_layer.o" beforeDir="false" afterPath="$PROJECT_DIR$/lib/video_prop_networks/lib/caffe/.build_release/cuda/src/caffe/layers/absval_layer.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/video_prop_networks/lib/caffe/.build_release/cuda/src/caffe/layers/accuracy_layer.o" beforeDir="false" afterPath="$PROJECT_DIR$/lib/video_prop_networks/lib/caffe/.build_release/cuda/src/caffe/layers/accuracy_layer.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/video_prop_networks/lib/caffe/.build_release/cuda/src/caffe/layers/base_data_layer.o" beforeDir="false" afterPath="$PROJECT_DIR$/lib/video_prop_networks/lib/caffe/.build_release/cuda/src/caffe/layers/base_data_layer.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/video_prop_networks/lib/caffe/.build_release/cuda/src/caffe/layers/batch_norm_layer.o" beforeDir="false" afterPath="$PROJECT_DIR$/lib/video_prop_networks/lib/caffe/.build_release/cuda/src/caffe/layers/batch_norm_layer.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/video_prop_networks/lib/caffe/.build_release/cuda/src/caffe/layers/batch_reindex_layer.o" beforeDir="false" afterPath="$PROJECT_DIR$/lib/video_prop_networks/lib/caffe/.build_release/cuda/src/caffe/layers/batch_reindex_layer.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/video_prop_networks/lib/caffe/.build_release/cuda/src/caffe/layers/bias_layer.o" beforeDir="false" afterPath="$PROJECT_DIR$/lib/video_prop_networks/lib/caffe/.build_release/cuda/src/caffe/layers/bias_layer.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/video_prop_networks/lib/caffe/.build_release/cuda/src/caffe/layers/bnll_layer.o" beforeDir="false" afterPath="$PROJECT_DIR$/lib/video_prop_networks/lib/caffe/.build_release/cuda/src/caffe/layers/bnll_layer.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/video_prop_networks/lib/caffe/.build_release/cuda/src/caffe/layers/clip_layer.o" beforeDir="false" afterPath="$PROJECT_DIR$/lib/video_prop_networks/lib/caffe/.build_release/cuda/src/caffe/layers/clip_layer.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/video_prop_networks/lib/caffe/.build_release/cuda/src/caffe/layers/concat_layer.o" beforeDir="false" afterPath="$PROJECT_DIR$/lib/video_prop_networks/lib/caffe/.build_release/cuda/src/caffe/layers/concat_layer.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/video_prop_networks/lib/caffe/.build_release/cuda/src/caffe/layers/contrastive_loss_layer.o" beforeDir="false" afterPath="$PROJECT_DIR$/lib/video_prop_networks/lib/caffe/.build_release/cuda/src/caffe/layers/contrastive_loss_layer.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/video_prop_networks/lib/caffe/.build_release/cuda/src/caffe/layers/conv_layer.o" beforeDir="false" afterPath="$PROJECT_DIR$/lib/video_prop_networks/lib/caffe/.build_release/cuda/src/caffe/layers/conv_layer.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/video_prop_networks/lib/caffe/.build_release/cuda/src/caffe/layers/crop_layer.o" beforeDir="false" afterPath="$PROJECT_DIR$/lib/video_prop_networks/lib/caffe/.build_release/cuda/src/caffe/layers/crop_layer.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/video_prop_networks/lib/caffe/.build_release/cuda/src/caffe/layers/cudnn_conv_layer.o" beforeDir="false" afterPath="$PROJECT_DIR$/lib/video_prop_networks/lib/caffe/.build_release/cuda/src/caffe/layers/cudnn_conv_layer.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/video_prop_networks/lib/caffe/.build_release/cuda/src/caffe/layers/cudnn_deconv_layer.o" beforeDir="false" afterPath="$PROJECT_DIR$/lib/video_prop_networks/lib/caffe/.build_release/cuda/src/caffe/layers/cudnn_deconv_layer.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/video_prop_networks/lib/caffe/.build_release/cuda/src/caffe/layers/cudnn_lcn_layer.o" beforeDir="false" afterPath="$PROJECT_DIR$/lib/video_prop_networks/lib/caffe/.build_release/cuda/src/caffe/layers/cudnn_lcn_layer.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/video_prop_networks/lib/caffe/.build_release/cuda/src/caffe/layers/cudnn_lrn_layer.o" beforeDir="false" afterPath="$PROJECT_DIR$/lib/video_prop_networks/lib/caffe/.build_release/cuda/src/caffe/layers/cudnn_lrn_layer.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/video_prop_networks/lib/caffe/.build_release/cuda/src/caffe/layers/cudnn_pooling_layer.o" beforeDir="false" afterPath="$PROJECT_DIR$/lib/video_prop_networks/lib/caffe/.build_release/cuda/src/caffe/layers/cudnn_pooling_layer.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/video_prop_networks/lib/caffe/.build_release/cuda/src/caffe/layers/cudnn_relu_layer.o" beforeDir="false" afterPath="$PROJECT_DIR$/lib/video_prop_networks/lib/caffe/.build_release/cuda/src/caffe/layers/cudnn_relu_layer.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/video_prop_networks/lib/caffe/.build_release/cuda/src/caffe/layers/cudnn_sigmoid_layer.o" beforeDir="false" afterPath="$PROJECT_DIR$/lib/video_prop_networks/lib/caffe/.build_release/cuda/src/caffe/layers/cudnn_sigmoid_layer.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/video_prop_networks/lib/caffe/.build_release/cuda/src/caffe/layers/cudnn_softmax_layer.o" beforeDir="false" afterPath="$PROJECT_DIR$/lib/video_prop_networks/lib/caffe/.build_release/cuda/src/caffe/layers/cudnn_softmax_layer.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/video_prop_networks/lib/caffe/.build_release/cuda/src/caffe/layers/cudnn_tanh_layer.o" beforeDir="false" afterPath="$PROJECT_DIR$/lib/video_prop_networks/lib/caffe/.build_release/cuda/src/caffe/layers/cudnn_tanh_layer.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/video_prop_networks/lib/caffe/.build_release/cuda/src/caffe/layers/deconv_layer.o" beforeDir="false" afterPath="$PROJECT_DIR$/lib/video_prop_networks/lib/caffe/.build_release/cuda/src/caffe/layers/deconv_layer.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/video_prop_networks/lib/caffe/.build_release/cuda/src/caffe/layers/dropout_layer.o" beforeDir="false" afterPath="$PROJECT_DIR$/lib/video_prop_networks/lib/caffe/.build_release/cuda/src/caffe/layers/dropout_layer.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/video_prop_networks/lib/caffe/.build_release/cuda/src/caffe/layers/egb_segment_layer.o" beforeDir="false" afterPath="$PROJECT_DIR$/lib/video_prop_networks/lib/caffe/.build_release/cuda/src/caffe/layers/egb_segment_layer.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/video_prop_networks/lib/caffe/.build_release/cuda/src/caffe/layers/eltwise_layer.o" beforeDir="false" afterPath="$PROJECT_DIR$/lib/video_prop_networks/lib/caffe/.build_release/cuda/src/caffe/layers/eltwise_layer.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/video_prop_networks/lib/caffe/.build_release/cuda/src/caffe/layers/elu_layer.o" beforeDir="false" afterPath="$PROJECT_DIR$/lib/video_prop_networks/lib/caffe/.build_release/cuda/src/caffe/layers/elu_layer.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/video_prop_networks/lib/caffe/.build_release/cuda/src/caffe/layers/embed_layer.o" beforeDir="false" afterPath="$PROJECT_DIR$/lib/video_prop_networks/lib/caffe/.build_release/cuda/src/caffe/layers/embed_layer.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/video_prop_networks/lib/caffe/.build_release/cuda/src/caffe/layers/euclidean_loss_layer.o" beforeDir="false" afterPath="$PROJECT_DIR$/lib/video_prop_networks/lib/caffe/.build_release/cuda/src/caffe/layers/euclidean_loss_layer.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/video_prop_networks/lib/caffe/.build_release/cuda/src/caffe/layers/exp_layer.o" beforeDir="false" afterPath="$PROJECT_DIR$/lib/video_prop_networks/lib/caffe/.build_release/cuda/src/caffe/layers/exp_layer.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/video_prop_networks/lib/caffe/.build_release/cuda/src/caffe/layers/filter_layer.o" beforeDir="false" afterPath="$PROJECT_DIR$/lib/video_prop_networks/lib/caffe/.build_release/cuda/src/caffe/layers/filter_layer.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/video_prop_networks/lib/caffe/.build_release/cuda/src/caffe/layers/hdf5_data_layer.o" beforeDir="false" afterPath="$PROJECT_DIR$/lib/video_prop_networks/lib/caffe/.build_release/cuda/src/caffe/layers/hdf5_data_layer.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/video_prop_networks/lib/caffe/.build_release/cuda/src/caffe/layers/hdf5_output_layer.o" beforeDir="false" afterPath="$PROJECT_DIR$/lib/video_prop_networks/lib/caffe/.build_release/cuda/src/caffe/layers/hdf5_output_layer.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/video_prop_networks/lib/caffe/.build_release/cuda/src/caffe/layers/im2col_layer.o" beforeDir="false" afterPath="$PROJECT_DIR$/lib/video_prop_networks/lib/caffe/.build_release/cuda/src/caffe/layers/im2col_layer.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/video_prop_networks/lib/caffe/.build_release/cuda/src/caffe/layers/inner_product_layer.o" beforeDir="false" afterPath="$PROJECT_DIR$/lib/video_prop_networks/lib/caffe/.build_release/cuda/src/caffe/layers/inner_product_layer.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/video_prop_networks/lib/caffe/.build_release/cuda/src/caffe/layers/log_layer.o" beforeDir="false" afterPath="$PROJECT_DIR$/lib/video_prop_networks/lib/caffe/.build_release/cuda/src/caffe/layers/log_layer.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/video_prop_networks/lib/caffe/.build_release/cuda/src/caffe/layers/loss_without_softmax_layer.o" beforeDir="false" afterPath="$PROJECT_DIR$/lib/video_prop_networks/lib/caffe/.build_release/cuda/src/caffe/layers/loss_without_softmax_layer.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/video_prop_networks/lib/caffe/.build_release/cuda/src/caffe/layers/lrn_layer.o" beforeDir="false" afterPath="$PROJECT_DIR$/lib/video_prop_networks/lib/caffe/.build_release/cuda/src/caffe/layers/lrn_layer.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/video_prop_networks/lib/caffe/.build_release/cuda/src/caffe/layers/lstm_unit_layer.o" beforeDir="false" afterPath="$PROJECT_DIR$/lib/video_prop_networks/lib/caffe/.build_release/cuda/src/caffe/layers/lstm_unit_layer.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/video_prop_networks/lib/caffe/.build_release/cuda/src/caffe/layers/mvn_layer.o" beforeDir="false" afterPath="$PROJECT_DIR$/lib/video_prop_networks/lib/caffe/.build_release/cuda/src/caffe/layers/mvn_layer.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/video_prop_networks/lib/caffe/.build_release/cuda/src/caffe/layers/normalize_layer.o" beforeDir="false" afterPath="$PROJECT_DIR$/lib/video_prop_networks/lib/caffe/.build_release/cuda/src/caffe/layers/normalize_layer.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/video_prop_networks/lib/caffe/.build_release/cuda/src/caffe/layers/passoc_layer.o" beforeDir="false" afterPath="$PROJECT_DIR$/lib/video_prop_networks/lib/caffe/.build_release/cuda/src/caffe/layers/passoc_layer.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/video_prop_networks/lib/caffe/.build_release/cuda/src/caffe/layers/pixel_feature_layer.o" beforeDir="false" afterPath="$PROJECT_DIR$/lib/video_prop_networks/lib/caffe/.build_release/cuda/src/caffe/layers/pixel_feature_layer.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/video_prop_networks/lib/caffe/.build_release/cuda/src/caffe/layers/pooling_layer.o" beforeDir="false" afterPath="$PROJECT_DIR$/lib/video_prop_networks/lib/caffe/.build_release/cuda/src/caffe/layers/pooling_layer.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/video_prop_networks/lib/caffe/.build_release/cuda/src/caffe/layers/power_layer.o" beforeDir="false" afterPath="$PROJECT_DIR$/lib/video_prop_networks/lib/caffe/.build_release/cuda/src/caffe/layers/power_layer.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/video_prop_networks/lib/caffe/.build_release/cuda/src/caffe/layers/prelu_layer.o" beforeDir="false" afterPath="$PROJECT_DIR$/lib/video_prop_networks/lib/caffe/.build_release/cuda/src/caffe/layers/prelu_layer.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/video_prop_networks/lib/caffe/.build_release/cuda/src/caffe/layers/recurrent_layer.o" beforeDir="false" afterPath="$PROJECT_DIR$/lib/video_prop_networks/lib/caffe/.build_release/cuda/src/caffe/layers/recurrent_layer.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/video_prop_networks/lib/caffe/.build_release/cuda/src/caffe/layers/reduction_layer.o" beforeDir="false" afterPath="$PROJECT_DIR$/lib/video_prop_networks/lib/caffe/.build_release/cuda/src/caffe/layers/reduction_layer.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/video_prop_networks/lib/caffe/.build_release/cuda/src/caffe/layers/rel_to_abs_index_layer.o" beforeDir="false" afterPath="$PROJECT_DIR$/lib/video_prop_networks/lib/caffe/.build_release/cuda/src/caffe/layers/rel_to_abs_index_layer.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/video_prop_networks/lib/caffe/.build_release/cuda/src/caffe/layers/relu_layer.o" beforeDir="false" afterPath="$PROJECT_DIR$/lib/video_prop_networks/lib/caffe/.build_release/cuda/src/caffe/layers/relu_layer.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/video_prop_networks/lib/caffe/.build_release/cuda/src/caffe/layers/scale_layer.o" beforeDir="false" afterPath="$PROJECT_DIR$/lib/video_prop_networks/lib/caffe/.build_release/cuda/src/caffe/layers/scale_layer.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/video_prop_networks/lib/caffe/.build_release/cuda/src/caffe/layers/sigmoid_cross_entropy_loss_layer.o" beforeDir="false" afterPath="$PROJECT_DIR$/lib/video_prop_networks/lib/caffe/.build_release/cuda/src/caffe/layers/sigmoid_cross_entropy_loss_layer.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/video_prop_networks/lib/caffe/.build_release/cuda/src/caffe/layers/sigmoid_layer.o" beforeDir="false" afterPath="$PROJECT_DIR$/lib/video_prop_networks/lib/caffe/.build_release/cuda/src/caffe/layers/sigmoid_layer.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/video_prop_networks/lib/caffe/.build_release/cuda/src/caffe/layers/silence_layer.o" beforeDir="false" afterPath="$PROJECT_DIR$/lib/video_prop_networks/lib/caffe/.build_release/cuda/src/caffe/layers/silence_layer.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/video_prop_networks/lib/caffe/.build_release/cuda/src/caffe/layers/slice_layer.o" beforeDir="false" afterPath="$PROJECT_DIR$/lib/video_prop_networks/lib/caffe/.build_release/cuda/src/caffe/layers/slice_layer.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/video_prop_networks/lib/caffe/.build_release/cuda/src/caffe/layers/smear_layer.o" beforeDir="false" afterPath="$PROJECT_DIR$/lib/video_prop_networks/lib/caffe/.build_release/cuda/src/caffe/layers/smear_layer.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/video_prop_networks/lib/caffe/.build_release/cuda/src/caffe/layers/softmax_layer.o" beforeDir="false" afterPath="$PROJECT_DIR$/lib/video_prop_networks/lib/caffe/.build_release/cuda/src/caffe/layers/softmax_layer.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/video_prop_networks/lib/caffe/.build_release/cuda/src/caffe/layers/softmax_loss_layer.o" beforeDir="false" afterPath="$PROJECT_DIR$/lib/video_prop_networks/lib/caffe/.build_release/cuda/src/caffe/layers/softmax_loss_layer.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/video_prop_networks/lib/caffe/.build_release/cuda/src/caffe/layers/spixel_feature2_layer.o" beforeDir="false" afterPath="$PROJECT_DIR$/lib/video_prop_networks/lib/caffe/.build_release/cuda/src/caffe/layers/spixel_feature2_layer.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/video_prop_networks/lib/caffe/.build_release/cuda/src/caffe/layers/spixel_feature_layer.o" beforeDir="false" afterPath="$PROJECT_DIR$/lib/video_prop_networks/lib/caffe/.build_release/cuda/src/caffe/layers/spixel_feature_layer.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/video_prop_networks/lib/caffe/.build_release/cuda/src/caffe/layers/split_layer.o" beforeDir="false" afterPath="$PROJECT_DIR$/lib/video_prop_networks/lib/caffe/.build_release/cuda/src/caffe/layers/split_layer.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/video_prop_networks/lib/caffe/.build_release/cuda/src/caffe/layers/swish_layer.o" beforeDir="false" afterPath="$PROJECT_DIR$/lib/video_prop_networks/lib/caffe/.build_release/cuda/src/caffe/layers/swish_layer.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/video_prop_networks/lib/caffe/.build_release/cuda/src/caffe/layers/tanh_layer.o" beforeDir="false" afterPath="$PROJECT_DIR$/lib/video_prop_networks/lib/caffe/.build_release/cuda/src/caffe/layers/tanh_layer.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/video_prop_networks/lib/caffe/.build_release/cuda/src/caffe/layers/threshold_layer.o" beforeDir="false" afterPath="$PROJECT_DIR$/lib/video_prop_networks/lib/caffe/.build_release/cuda/src/caffe/layers/threshold_layer.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/video_prop_networks/lib/caffe/.build_release/cuda/src/caffe/layers/tile_layer.o" beforeDir="false" afterPath="$PROJECT_DIR$/lib/video_prop_networks/lib/caffe/.build_release/cuda/src/caffe/layers/tile_layer.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/video_prop_networks/lib/caffe/.build_release/cuda/src/caffe/solvers/adadelta_solver.o" beforeDir="false" afterPath="$PROJECT_DIR$/lib/video_prop_networks/lib/caffe/.build_release/cuda/src/caffe/solvers/adadelta_solver.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/video_prop_networks/lib/caffe/.build_release/cuda/src/caffe/solvers/adagrad_solver.o" beforeDir="false" afterPath="$PROJECT_DIR$/lib/video_prop_networks/lib/caffe/.build_release/cuda/src/caffe/solvers/adagrad_solver.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/video_prop_networks/lib/caffe/.build_release/cuda/src/caffe/solvers/adam_solver.o" beforeDir="false" afterPath="$PROJECT_DIR$/lib/video_prop_networks/lib/caffe/.build_release/cuda/src/caffe/solvers/adam_solver.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/video_prop_networks/lib/caffe/.build_release/cuda/src/caffe/solvers/nesterov_solver.o" beforeDir="false" afterPath="$PROJECT_DIR$/lib/video_prop_networks/lib/caffe/.build_release/cuda/src/caffe/solvers/nesterov_solver.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/video_prop_networks/lib/caffe/.build_release/cuda/src/caffe/solvers/rmsprop_solver.o" beforeDir="false" afterPath="$PROJECT_DIR$/lib/video_prop_networks/lib/caffe/.build_release/cuda/src/caffe/solvers/rmsprop_solver.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/video_prop_networks/lib/caffe/.build_release/cuda/src/caffe/solvers/sgd_solver.o" beforeDir="false" afterPath="$PROJECT_DIR$/lib/video_prop_networks/lib/caffe/.build_release/cuda/src/caffe/solvers/sgd_solver.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/video_prop_networks/lib/caffe/.build_release/cuda/src/caffe/util/im2col.o" beforeDir="false" afterPath="$PROJECT_DIR$/lib/video_prop_networks/lib/caffe/.build_release/cuda/src/caffe/util/im2col.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/video_prop_networks/lib/caffe/.build_release/cuda/src/caffe/util/interp.o" beforeDir="false" afterPath="$PROJECT_DIR$/lib/video_prop_networks/lib/caffe/.build_release/cuda/src/caffe/util/interp.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/video_prop_networks/lib/caffe/.build_release/cuda/src/caffe/util/math_functions.o" beforeDir="false" afterPath="$PROJECT_DIR$/lib/video_prop_networks/lib/caffe/.build_release/cuda/src/caffe/util/math_functions.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/video_prop_networks/lib/caffe/.build_release/examples/cifar10/convert_cifar_data.bin" beforeDir="false" afterPath="$PROJECT_DIR$/lib/video_prop_networks/lib/caffe/.build_release/examples/cifar10/convert_cifar_data.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/video_prop_networks/lib/caffe/.build_release/examples/cpp_classification/classification.bin" beforeDir="false" afterPath="$PROJECT_DIR$/lib/video_prop_networks/lib/caffe/.build_release/examples/cpp_classification/classification.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/video_prop_networks/lib/caffe/.build_release/examples/mnist/convert_mnist_data.bin" beforeDir="false" afterPath="$PROJECT_DIR$/lib/video_prop_networks/lib/caffe/.build_release/examples/mnist/convert_mnist_data.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/video_prop_networks/lib/caffe/.build_release/examples/siamese/convert_mnist_siamese_data.bin" beforeDir="false" afterPath="$PROJECT_DIR$/lib/video_prop_networks/lib/caffe/.build_release/examples/siamese/convert_mnist_siamese_data.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/video_prop_networks/lib/caffe/.build_release/lib/libcaffe.a" beforeDir="false" afterPath="$PROJECT_DIR$/lib/video_prop_networks/lib/caffe/.build_release/lib/libcaffe.a" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/video_prop_networks/lib/caffe/.build_release/lib/libcaffe.so" beforeDir="false" afterPath="$PROJECT_DIR$/lib/video_prop_networks/lib/caffe/.build_release/lib/libcaffe.so" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/video_prop_networks/lib/caffe/.build_release/lib/libcaffe.so.1.0.0" beforeDir="false" afterPath="$PROJECT_DIR$/lib/video_prop_networks/lib/caffe/.build_release/lib/libcaffe.so.1.0.0" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/video_prop_networks/lib/caffe/.build_release/tools/caffe" beforeDir="false" afterPath="$PROJECT_DIR$/lib/video_prop_networks/lib/caffe/.build_release/tools/caffe" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/video_prop_networks/lib/caffe/.build_release/tools/caffe.bin" beforeDir="false" afterPath="$PROJECT_DIR$/lib/video_prop_networks/lib/caffe/.build_release/tools/caffe.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/video_prop_networks/lib/caffe/.build_release/tools/compute_image_mean" beforeDir="false" afterPath="$PROJECT_DIR$/lib/video_prop_networks/lib/caffe/.build_release/tools/compute_image_mean" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/video_prop_networks/lib/caffe/.build_release/tools/compute_image_mean.bin" beforeDir="false" afterPath="$PROJECT_DIR$/lib/video_prop_networks/lib/caffe/.build_release/tools/compute_image_mean.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/video_prop_networks/lib/caffe/.build_release/tools/convert_imageset" beforeDir="false" afterPath="$PROJECT_DIR$/lib/video_prop_networks/lib/caffe/.build_release/tools/convert_imageset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/video_prop_networks/lib/caffe/.build_release/tools/convert_imageset.bin" beforeDir="false" afterPath="$PROJECT_DIR$/lib/video_prop_networks/lib/caffe/.build_release/tools/convert_imageset.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/video_prop_networks/lib/caffe/.build_release/tools/extract_features" beforeDir="false" afterPath="$PROJECT_DIR$/lib/video_prop_networks/lib/caffe/.build_release/tools/extract_features" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/video_prop_networks/lib/caffe/.build_release/tools/extract_features.bin" beforeDir="false" afterPath="$PROJECT_DIR$/lib/video_prop_networks/lib/caffe/.build_release/tools/extract_features.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/video_prop_networks/lib/caffe/.build_release/tools/upgrade_net_proto_binary" beforeDir="false" afterPath="$PROJECT_DIR$/lib/video_prop_networks/lib/caffe/.build_release/tools/upgrade_net_proto_binary" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/video_prop_networks/lib/caffe/.build_release/tools/upgrade_net_proto_binary.bin" beforeDir="false" afterPath="$PROJECT_DIR$/lib/video_prop_networks/lib/caffe/.build_release/tools/upgrade_net_proto_binary.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/video_prop_networks/lib/caffe/.build_release/tools/upgrade_net_proto_text" beforeDir="false" afterPath="$PROJECT_DIR$/lib/video_prop_networks/lib/caffe/.build_release/tools/upgrade_net_proto_text" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/video_prop_networks/lib/caffe/.build_release/tools/upgrade_net_proto_text.bin" beforeDir="false" afterPath="$PROJECT_DIR$/lib/video_prop_networks/lib/caffe/.build_release/tools/upgrade_net_proto_text.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/video_prop_networks/lib/caffe/.build_release/tools/upgrade_solver_proto_text" beforeDir="false" afterPath="$PROJECT_DIR$/lib/video_prop_networks/lib/caffe/.build_release/tools/upgrade_solver_proto_text" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/video_prop_networks/lib/caffe/.build_release/tools/upgrade_solver_proto_text.bin" beforeDir="false" afterPath="$PROJECT_DIR$/lib/video_prop_networks/lib/caffe/.build_release/tools/upgrade_solver_proto_text.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/video_prop_networks/lib/caffe/build" beforeDir="false" afterPath="$PROJECT_DIR$/lib/video_prop_networks/lib/caffe/build" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/video_prop_networks/lib/caffe/python/caffe/_caffe.so" beforeDir="false" afterPath="$PROJECT_DIR$/lib/video_prop_networks/lib/caffe/python/caffe/_caffe.so" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -16,25 +117,25 @@
           <entry key="project.open.time.0" value="9" />
           <entry key="project.open.time.13" value="1" />
           <entry key="project.open.time.14" value="6" />
-          <entry key="project.open.time.15" value="3" />
+          <entry key="project.open.time.15" value="4" />
           <entry key="project.open.time.16" value="2" />
           <entry key="project.open.time.17" value="2" />
           <entry key="project.open.time.2" value="8" />
           <entry key="project.open.time.20" value="1" />
           <entry key="project.open.time.24" value="1" />
-          <entry key="project.opened" value="33" />
+          <entry key="project.opened" value="34" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
           <entry key="md" value="1" />
-          <entry key="py" value="76" />
+          <entry key="py" value="77" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
           <entry key="Markdown" value="1" />
-          <entry key="Python" value="76" />
+          <entry key="Python" value="77" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
@@ -60,10 +161,19 @@
         <entry file="file://$PROJECT_DIR$/create_solver.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="780">
-              <caret line="55" column="25" lean-forward="true" selection-start-line="55" selection-start-column="25" selection-end-line="55" selection-end-column="25" />
+              <caret line="55" column="25" selection-start-line="55" selection-start-column="25" selection-end-line="55" selection-end-column="25" />
               <folding>
                 <element signature="e#221#236#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/fetch_and_transform_data.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="554">
+              <caret line="250" column="28" lean-forward="true" selection-start-line="250" selection-start-column="28" selection-end-line="250" selection-end-column="28" />
             </state>
           </provider>
         </entry>
@@ -81,7 +191,7 @@
         <entry file="file://$PROJECT_DIR$/create_net.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="480">
-              <caret line="447" lean-forward="true" selection-start-line="447" selection-end-line="447" />
+              <caret line="441" column="54" lean-forward="true" selection-start-line="441" selection-start-column="54" selection-end-line="441" selection-end-column="54" />
               <folding>
                 <element signature="e#24#48#0" expanded="true" />
                 <element signature="e#8229#8711#0" />
@@ -105,8 +215,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/compute_ssn_spixels.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="825">
-              <caret line="70" column="25" selection-start-line="70" selection-start-column="25" selection-end-line="70" selection-end-column="25" />
+            <state relative-caret-position="270">
+              <caret line="33" column="31" lean-forward="true" selection-start-line="33" selection-start-column="31" selection-end-line="33" selection-end-column="31" />
               <folding>
                 <element signature="e#221#239#0" expanded="true" />
               </folding>
@@ -183,7 +293,7 @@
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="7">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="11" />
     <option name="y" value="15" />
     <option name="width" value="1074" />
@@ -208,6 +318,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -219,7 +330,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -280,7 +390,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="50" y="-11" width="1871" height="1092" extended-state="7" />
+    <frame x="51" y="-4" width="1869" height="1084" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49931973" visible="true" weight="0.18039003" />
@@ -417,13 +527,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/fetch_and_transform_data.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="244" column="17" selection-start-line="244" selection-start-column="4" selection-end-line="244" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/input_patch_data_layer.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="345">
@@ -431,13 +534,17 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/compute_ssn_spixels.py">
+    <entry file="file://$PROJECT_DIR$/train_ssn.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="825">
-          <caret line="70" column="25" selection-start-line="70" selection-start-column="25" selection-end-line="70" selection-end-column="25" />
-          <folding>
-            <element signature="e#221#239#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="510">
+          <caret line="42" column="37" selection-start-line="42" selection-start-column="37" selection-end-line="42" selection-end-column="37" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="14" column="13" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="13" />
         </state>
       </provider>
     </entry>
@@ -456,34 +563,37 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/config.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="14" column="13" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/create_solver.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="780">
-          <caret line="55" column="25" lean-forward="true" selection-start-line="55" selection-start-column="25" selection-end-line="55" selection-end-column="25" />
+          <caret line="55" column="25" selection-start-line="55" selection-start-column="25" selection-end-line="55" selection-end-column="25" />
           <folding>
             <element signature="e#221#236#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/train_ssn.py">
+    <entry file="file://$PROJECT_DIR$/fetch_and_transform_data.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="510">
-          <caret line="42" column="37" selection-start-line="42" selection-start-column="37" selection-end-line="42" selection-end-column="37" />
+        <state relative-caret-position="554">
+          <caret line="250" column="28" lean-forward="true" selection-start-line="250" selection-start-column="28" selection-end-line="250" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/compute_ssn_spixels.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="33" column="31" lean-forward="true" selection-start-line="33" selection-start-column="31" selection-end-line="33" selection-end-column="31" />
+          <folding>
+            <element signature="e#221#239#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/create_net.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="480">
-          <caret line="447" lean-forward="true" selection-start-line="447" selection-end-line="447" />
+          <caret line="441" column="54" lean-forward="true" selection-start-line="441" selection-start-column="54" selection-end-line="441" selection-end-column="54" />
           <folding>
             <element signature="e#24#48#0" expanded="true" />
             <element signature="e#8229#8711#0" />
