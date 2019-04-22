@@ -405,6 +405,13 @@ def create_ssn_net(img_height, img_width,
                                              spixel_feature2_param =\
             dict(num_spixels_h = num_spixels_h, num_spixels_w = num_spixels_w))
 
+        # superpixel_pooling
+        n.superpixel_pooling_out, n.superpixel_seg_label = L.SuperpixelPooling(n.conv_dsp, n.seg_label,
+                                                                               n.new_spix_indices,
+                                                                               superpixel_pooling_param=dict(
+                                                                                   pool_type=P.Pooling.AVE), ntop=2)
+
+
         # 得到最后的超像素标签
         #计算最后的超像素与像素的联系
         n.new_spix_indices = compute_final_spixel_labels(n.final_pixel_assoc,
@@ -432,11 +439,6 @@ def create_ssn_net(img_height, img_width,
         n.recon_label = decode_features(n.final_pixel_assoc, n.spixel_label, n.spixel_init,
                                         num_spixels_h, num_spixels_w, num_spixels, num_channels = 50)
 
-        # superpixel_pooling
-        n.superpixel_pooling_out, n.superpixel_seg_label = L.SuperpixelPooling(n.conv_dsp, n.seg_label,
-                                                                               n.new_spix_indices,
-                                                                               superpixel_pooling_param=dict(
-                                                                                   pool_type=P.Pooling.AVE), ntop=2)
         n.recon_label = L.ReLU(n.recon_label, in_place = True)
         n.recon_label2 = L.Power(n.recon_label, power_param = dict(shift = 1e-10))
         n.recon_label3 = normalize(n.recon_label2, 50)
