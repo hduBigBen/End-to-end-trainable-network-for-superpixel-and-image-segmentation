@@ -55,7 +55,7 @@ def create_solver_proto(train_net,
     solver.power = 0.9
     solver.momentum = 0.9
     solver.momentum2 = 0.999
-    solver.stepsize = 1000
+    solver.stepsize = 10000
     solver.gamma = 0.1
 
 

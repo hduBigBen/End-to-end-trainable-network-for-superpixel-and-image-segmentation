@@ -92,7 +92,7 @@ def conv_down_relu_layer(bottom, num_out):
 def conv_normalize_layer(bottom, num_out):
 
     conv1 = L.Convolution(bottom,
-                          convolution_param=dict(num_output=num_out, kernel_size=1, stride=1, pad=1,
+                          convolution_param=dict(num_output=num_out, kernel_size=1, stride=1, pad=0,
                                                  weight_filler=dict(type='xavier', std=0.01),
                                                  bias_filler=dict(type='constant', value=0)),
                           # engine = P.Convolution.CUDNN),
@@ -106,7 +106,7 @@ def conv_normalize_layer(bottom, num_out):
 
 def deconv_crop_layer(bottom, bottom2,num_out, size_kerbel,size_stride,num_offset):
     deconv1 = L.Deconvolution(bottom,
-                              convolution_param = dict(num_output = num_out, kernel_size = size_kerbel, stride = size_stride, pad =1),
+                              convolution_param = dict(num_output = num_out, kernel_size = size_kerbel, stride = size_stride, pad =0),
                                                        param = [{'lr_mult':0,'decay_mult':1},{'lr_mult':0, 'decay_mult':0}])
     feature_dsn = L.Crop(deconv1,bottom2,
                           crop_param = dict(axis = 2, offset = num_offset))
@@ -446,19 +446,6 @@ def create_ssn_net(img_height, img_width,
 
         # 这里需要获得超像素
 
-        # n.spix_index = np.squeeze(net.blobs['new_spix_indices'].data).astype(int)
-        # spix_index = n.new_spix_indices
-        #
-        # # if enforce_connectivity:
-        # #     segment_size = (img_height * img_width) / (int(num_spixels) * 1.0)
-        # #     min_size = int(0.06 * segment_size)
-        # #     max_size = int(3 * segment_size)
-        # #     # 用于从标签中删除断开连接的小区域的helper函数   ps:这里我觉得应该是得到的超像素
-        # #     spix_index = enforce_connectivity(spix_index[None, :, :], min_size, max_size)[0]
-        #
-        #
-        # # 返回标记区域之间边界突出显示的图像。 这个应该相当于n.sp_label
-        # n.spixel_image = get_spixel_image(n.img, spix_index)
 
 
         # the loss of del
