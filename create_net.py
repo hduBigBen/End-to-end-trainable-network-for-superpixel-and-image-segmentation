@@ -405,20 +405,22 @@ def create_ssn_net(img_height, img_width,
                                              spixel_feature2_param =\
             dict(num_spixels_h = num_spixels_h, num_spixels_w = num_spixels_w))
 
-        # superpixel_pooling
-        n.superpixel_pooling_out, n.superpixel_seg_label = L.SuperpixelPooling(n.conv_dsp, n.seg_label,
-                                                                               n.new_spix_indices,
-                                                                               superpixel_pooling_param=dict(
-                                                                                   pool_type=P.Pooling.AVE), ntop=2)
-
-        n.sim_loss = L.SimilarityLoss(n.superpixel_pooling_out,n.superpixel_seg_label, n.new_spix_indices,
-                                      loss_weight = 1, similarity_loss_param = dict(sample_points = 1))
 
         # 得到最后的超像素标签
         #计算最后的超像素与像素的联系
         n.new_spix_indices = compute_final_spixel_labels(n.final_pixel_assoc,
                                                          n.spixel_init,
                                                          num_spixels_h, num_spixels_w)
+
+        # superpixel_pooling
+        n.superpixel_pooling_out, n.superpixel_seg_label = L.SuperpixelPooling(n.conv_dsp, n.seg_label,
+                                                                               n.new_spix_indices,
+                                                                               superpixel_pooling_param=dict(
+                                                                                   pool_type=P.Pooling.AVE), ntop=2)
+
+        n.sim_loss = L.SimilarityLoss(n.superpixel_pooling_out, n.superpixel_seg_label, n.new_spix_indices,
+                                      loss_weight=1, similarity_loss_param=dict(sample_points=1))
+
 
         n.recon_feat2 = L.Smear(n.new_spixel_feat, n.new_spix_indices,
                                 propagate_down = [True, False])
