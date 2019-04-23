@@ -51,12 +51,12 @@ def create_solver_proto(train_net,
     solver.solver_mode = PB.SolverParameter.GPU
     solver.solver_type = PB.SolverParameter.ADAM
     solver.base_lr = lr
-    solver.lr_policy = "step"
+    solver.lr_policy = "fixed"
     solver.power = 0.9
     solver.momentum = 0.9
     solver.momentum2 = 0.999
-    solver.stepsize = 10000
-    solver.gamma = 0.1
+    # solver.stepsize = 10000
+    # solver.gamma = 0.1
 
 
     solver.debug_info = debug_info
