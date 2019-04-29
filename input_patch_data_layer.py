@@ -119,7 +119,7 @@ class InputRead(caffe.Layer):
         self.num_tops = 7
         # self.top_names = ['img', 'spixel_init', 'feat_spixel_init', 'label', 'problabel']
         self.top_names = ['img', 'spixel_init', 'feat_spixel_init', 'label', 'problabel','seg_label']
-        self.top_channels = [3, 1, 1, 1, 50, 3]
+        self.top_channels = [3, 1, 1, 1, 50, 1]
         self.pool_size = 10
 
     def setup(self, bottom, top):

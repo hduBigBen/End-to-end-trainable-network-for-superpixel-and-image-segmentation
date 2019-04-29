@@ -186,11 +186,11 @@ def fetch_and_transform_patch_data(imgname,
 
     # 分割后的图像
 
-    sort_gt_folder = SORT_GT_FOLDER[data_type]
-    sort_gt__filename = sort_gt_folder + imgname + '.png'
-    sort_gt = img_as_float(io.imread(sort_gt__filename))
-    sort_gt = scale_image(sort_gt, s_factor)
-    sort_gt = rgb2lab(sort_gt)
+    # sort_gt_folder = SORT_GT_FOLDER[data_type]
+    # sort_gt__filename = sort_gt_folder + imgname + '.png'
+    # sort_gt = img_as_float(io.imread(sort_gt__filename))
+    # sort_gt = scale_image(sort_gt, s_factor)
+    # sort_gt = rgb2lab(sort_gt)
 
     # 超像素
     # sp_gt_folder = SP_GT_FOLDER[data_type]
@@ -233,13 +233,13 @@ def fetch_and_transform_patch_data(imgname,
                     start_col : start_col + out_width, :]
 
     # sort_gt
-    sort_gt_cropped = sort_gt[start_row: start_row + out_height,
-                      start_col: start_col + out_width, :]
+    # sort_gt_cropped = sort_gt[start_row: start_row + out_height,
+    #                   start_col: start_col + out_width, :]
     # sp_gt_cropped = sp_gt[start_row: start_row + out_height,
     #                 start_col: start_col + out_width]
 
-    out_img = transform_and_get_image(im_cropped, max_spixels, [out_height, out_width])
-    out_sort_gt = transform_and_get_image(sort_gt_cropped, max_spixels, [out_height, out_width])
+    out_img = transform_and_get_image(im_cropped, max_spixels, [out_height, out_width])  # 221 221
+    # out_sort_gt = transform_and_get_image(sort_gt_cropped, max_spixels, [out_height, out_width])
     # out_sp_gt = transform_and_get_splabel(sp_gt_cropped, max_spixels, [out_height, out_width])
 
     gtseg_cropped = gtseg[start_row : start_row + out_height,
@@ -262,6 +262,7 @@ def fetch_and_transform_patch_data(imgname,
         if in_name == 'problabel':
             inputs['problabel'] = problabel_cropped
         if in_name == 'seg_label':
+            gtseg_cropped = np.expand_dims(np.expand_dims(gtseg_cropped, axis=0), axis=0)
             inputs['seg_label'] = gtseg_cropped
         # if in_name == 'sp_label':
         #     inputs['sp_label'] = out_sp_gt
