@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 #!/usr/bin/env python
 
 """
@@ -67,44 +66,6 @@ def train_net(l_rate, num_steps, caffe_model = None):
         solver.net.copy_from(caffe_model)
 
     solver.solve()
-
-    # 画图
-
-    # 最大解算次数
-    niter = 50000
-
-    # 每隔20次收集一次数据
-    display = 20
-    # 初始化
-    train_loss = np.zeros(ceil(niter * 1.0 / display))
-
-    # iteration 0，不计入
-    solver.step(1)
-
-    # 辅助变量
-    _train_loss = 0
-    _test_loss = 0
-    # 进行解算
-    for it in range(niter):
-        # 进行一次解算
-        solver.step(1)
-        # 每迭代一次，训练batch_size张图片
-        _train_loss += solver.net.blobs['loss0'].data
-        if it % display == 0:
-            # 计算平均train loss
-            train_loss[it // display] = _train_loss / display
-            _train_loss = 0
-
-     # 绘制train loss、test loss和accuracy曲线
-    print '\nplot the train loss and test accuracy\n'
-    _, ax1 = plt.subplots()
-
-    # train loss -> 绿色
-    ax1.plot(display * arange(len(train_loss)), train_loss, 'g')
-
-    ax1.set_xlabel('iteration')
-    ax1.set_ylabel('loss')
-    plt.show()
 
 
 def main():
