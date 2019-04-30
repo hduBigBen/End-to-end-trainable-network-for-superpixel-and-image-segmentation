@@ -25,8 +25,10 @@ def train_net(l_rate, num_steps, caffe_model = None):
     test_iter = 200
     iter_size = 1
     test_interval = 10000
-    num_iter = 1000000
-    snapshot_iter = 10000
+    # num_iter = 1000000
+    num_iter = 10000
+    # snapshot_iter = 10000
+    snapshot_iter = 100
     debug_info = False
 
     # Net params
@@ -71,7 +73,7 @@ def train_net(l_rate, num_steps, caffe_model = None):
     # 画图
 
     # 最大解算次数
-    niter = 50000
+    niter = 10000
 
     # 每隔20次收集一次数据
     display = 20
@@ -83,7 +85,6 @@ def train_net(l_rate, num_steps, caffe_model = None):
 
     # 辅助变量
     _train_loss = 0
-    _test_loss = 0
     # 进行解算
     for it in range(niter):
         # 进行一次解算
