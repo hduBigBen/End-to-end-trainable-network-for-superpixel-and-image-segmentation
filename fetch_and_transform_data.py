@@ -238,7 +238,7 @@ def fetch_and_transform_patch_data(imgname,
     # sp_gt_cropped = sp_gt[start_row: start_row + out_height,
     #                 start_col: start_col + out_width]
 
-    out_img = transform_and_get_image(im_cropped, max_spixels, [out_height, out_width])  # 221 221
+    out_img = transform_and_get_image(im_cropped, max_spixels, [out_height, out_width])
     # out_sort_gt = transform_and_get_image(sort_gt_cropped, max_spixels, [out_height, out_width])
     # out_sp_gt = transform_and_get_splabel(sp_gt_cropped, max_spixels, [out_height, out_width])
 
@@ -264,7 +264,4 @@ def fetch_and_transform_patch_data(imgname,
         if in_name == 'seg_label':
             gtseg_cropped = np.expand_dims(np.expand_dims(gtseg_cropped, axis=0), axis=0)
             inputs['seg_label'] = gtseg_cropped
-        # if in_name == 'sp_label':
-        #     inputs['sp_label'] = out_sp_gt
-
     return [inputs, height, width]

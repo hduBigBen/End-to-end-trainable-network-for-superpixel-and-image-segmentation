@@ -1,7 +1,11 @@
-# -*- coding: utf-8 -*-
 #!/usr/bin/env python
 
-import matplotlib.pyplot as plt
+"""
+Copyright (C) 2018 NVIDIA Corporation.  All rights reserved.
+Licensed under the CC BY-NC-SA 4.0 license (https://creativecommons.org/licenses/by-nc-sa/4.0/legalcode).
+Author: Varun Jampani
+"""
+
 import tempfile
 from caffe.proto import caffe_pb2 as PB
 from config import *
@@ -51,7 +55,6 @@ def create_solver_proto(train_net,
     solver.power = 0.9
     solver.momentum = 0.9
     solver.momentum2 = 0.999
-    # solver.stepsize = 10000
-    # solver.gamma = 0.1
+
     solver.debug_info = debug_info
     return solver

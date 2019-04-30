@@ -52,12 +52,14 @@ def conv_relu_layer(bottom, num_out):
     return conv1
 
 # feature layer
+# 也许这里需要改一下,梯度停止传递
 def conv_relu_feature_layer(bottom, num_out):
     conv1 = L.Convolution(bottom,
                           convolution_param=dict(num_output=num_out, kernel_size=3, stride=1, pad=1,
                                                  weight_filler=dict(type='xavier', std=0.01),
                                                  bias_filler=dict(type='constant', value=0)),
-                          param=[{'lr_mult': 1, 'decay_mult': 1}, {'lr_mult': 2, 'decay_mult': 0}])
+                          param=[{'lr_mult': 1, 'decay_mult': 1}, {'lr_mult': 2, 'decay_mult': 0}],
+                          propagate_down=False)
 
     conv1 = L.ReLU(conv1, in_place = True)
 
@@ -92,7 +94,7 @@ def conv_down_relu_layer(bottom, num_out):
 def conv_normalize_layer(bottom, num_out):
 
     conv1 = L.Convolution(bottom,
-                          convolution_param=dict(num_output=num_out, kernel_size=1, stride=1, pad=0,
+                          convolution_param=dict(num_output=num_out, kernel_size=1, stride=1,
                                                  weight_filler=dict(type='xavier', std=0.01),
                                                  bias_filler=dict(type='constant', value=0)),
                           # engine = P.Convolution.CUDNN),
@@ -106,7 +108,7 @@ def conv_normalize_layer(bottom, num_out):
 
 def deconv_crop_layer(bottom, bottom2,num_out, size_kerbel,size_stride,num_offset):
     deconv1 = L.Deconvolution(bottom,
-                              convolution_param = dict(num_output = num_out, kernel_size = size_kerbel, stride = size_stride, pad =0),
+                              convolution_param = dict(num_output = num_out, kernel_size = size_kerbel, stride = size_stride),
                                                        param = [{'lr_mult':0,'decay_mult':1},{'lr_mult':0, 'decay_mult':0}])
     feature_dsn = L.Crop(deconv1,bottom2,
                           crop_param = dict(axis = 2, offset = num_offset))
@@ -140,7 +142,7 @@ def cnn_module(bottom, num_out):
     # conv1 side output
     conv1_2_down = conv_down_relu_layer(conv1_2,32)
     conv1_2_norm = conv_normalize_layer(conv1_2_down, 32)
-    feature_dsn1 = L.Crop(conv1_2_norm, bottom)
+    # feature_dsn1 = L.Crop(conv1_2_norm, bottom)
 
     # conv2 side output
     conv2_2_down = conv_down_relu_layer(conv2_2, 64)
@@ -163,7 +165,7 @@ def cnn_module(bottom, num_out):
     feature_dsn5 = deconv_crop_layer(conv5_3_norm, bottom, 128, 16, 8, 4)
 
     # concat multiscale feature layer
-    feature = L.Concat(feature_dsn1, feature_dsn2, feature_dsn3, feature_dsn4, feature_dsn5,
+    feature = L.Concat(conv1_2_norm, feature_dsn2, feature_dsn3, feature_dsn4, feature_dsn5,
                        concat_param = dict(axis = 1))
 
 
@@ -181,6 +183,7 @@ def cnn_module(bottom, num_out):
 
 
     # the layer of ssn
+
     conv_comb = conv_relu_layer(feature,num_out)
     # conv_dsp == Feature Embedding Space
     return conv_comb, conv_dsp
@@ -449,15 +452,6 @@ def create_ssn_net(img_height, img_width,
         n.loss3 = L.LossWithoutSoftmax(n.recon_label3, n.label,
                                        loss_param = dict(ignore_label = 255),
                                        loss_weight = 1.0)
-
-        # 这里需要获得超像素
-
-
-
-        # the loss of del
-
-
-
 
     else:
         n.new_spix_indices = compute_final_spixel_labels(n.final_pixel_assoc,
