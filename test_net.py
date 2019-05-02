@@ -68,8 +68,11 @@ def compute_spixels(data_type, n_spixels, num_steps,
                     dinputs['feat_spixel_init'] = feat_spixel_initmap
 
                     # 新加
-                    dinputs['bound_param'] = threshold
-                    dinputs['minsize_param'] = min_size[j]
+                    thresholda = np.random.randint(bound[i], bound[i]+1, size=(1, 1, 1, 1))
+                    thresholda = thresholda/100.0
+                    min_sizea = np.random.randint(min_size[j], min_size[j]+1, size=(1, 1, 1, 1))
+                    dinputs['bound_param'] = thresholda
+                    dinputs['minsize_param'] = min_sizea
 
 
                     pos_scale_w = (1.0 * num_spixels_w) / (float(p_scale) * width)
@@ -85,15 +88,15 @@ def compute_spixels(data_type, n_spixels, num_steps,
                     else:
                         net = initialize_net_weight(net)
 
-                        net.blobs['img'] = inputs['img']
-                        net.blobs['spixel_init'] = spixel_initmap
-                        net.blobs['feat_spixel_init'] = feat_spixel_initmap
-                        net.blobs['bound_param'].data[...] = threshold
-                        net.blobs['minsize_param'].data[...] = min_size[j]
+                        # net.blobs['img'] = inputs['img']
+                        # net.blobs['spixel_init'] = spixel_initmap
+                        # net.blobs['feat_spixel_init'] = feat_spixel_initmap
+                        # net.blobs['bound_param'].data[...] = threshold
+                        # net.blobs['minsize_param'].data[...] = min_size[j]
 
                     num_spixels = int(num_spixels_w * num_spixels_h)
-                    # result = net.forward_all(**dinputs)
-                    result = net.forward()
+                    result = net.forward_all(**dinputs)
+                    # result = net.forward()
 
 
 

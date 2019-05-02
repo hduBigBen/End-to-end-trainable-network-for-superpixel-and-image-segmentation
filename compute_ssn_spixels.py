@@ -50,10 +50,21 @@ def compute_spixels(data_type, n_spixels, num_steps,
             [spixel_initmap, feat_spixel_initmap, num_spixels_h, num_spixels_w] =\
                 transform_and_get_spixel_init(int(n_spixels), [height, width])
 
+            # threshold = 1
+            threshold = np.random.randint(20, size=(1, 1, 1, 1))
+            min_size = np.random.randint(2, size=(1, 1, 1, 1))
+            # min_size = 2
+
+            # thresholda = threshold.reshape(1, 1, 1, 1)
+            # min_sizea = min_size.reshape(1, 1, 1, 1)
+
+
             dinputs = {}
             dinputs['img'] = inputs['img']
             dinputs['spixel_init'] = spixel_initmap
             dinputs['feat_spixel_init'] = feat_spixel_initmap
+            dinputs['bound_param'] = threshold
+            dinputs['minsize_param'] = min_size
 
             pos_scale_w = (1.0 * num_spixels_w) / (float(p_scale) * width)
             pos_scale_h = (1.0 * num_spixels_h) / (float(p_scale) * height)
@@ -68,19 +79,18 @@ def compute_spixels(data_type, n_spixels, num_steps,
             else:
                 net = initialize_net_weight(net)
 
-            threshold = 1
-            min_size = 2
 
-            net.blobs['img'] = inputs['img']
-            net.blobs['spixel_init'] = spixel_initmap
-            net.blobs['feat_spixel_init'] = feat_spixel_initmap
-            net.blobs['bound_param'].data[...] = threshold
-            net.blobs['minsize_param'].data[...] = min_size
+
+            # net.blobs['img'] = inputs['img']
+            # net.blobs['spixel_init'] = spixel_initmap
+            # net.blobs['feat_spixel_init'] = feat_spixel_initmap
+            # net.blobs['bound_param'].data[...] = threshold
+            # net.blobs['minsize_param'].data[...] = min_size
 
 
             num_spixels = int(num_spixels_w * num_spixels_h)
-            # result = net.forward_all(**dinputs)
-            result = net.forward()
+            result = net.forward_all(**dinputs)
+            # result = net.forward()
 
             given_img = fromimage(Image.open(IMG_FOLDER[data_type] + imgname + '.jpg'))
             spix_index = np.squeeze(net.blobs['new_spix_indices'].data).astype(int)

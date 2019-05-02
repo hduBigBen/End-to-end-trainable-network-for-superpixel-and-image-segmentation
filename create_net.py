@@ -171,7 +171,7 @@ def cnn_module(bottom, num_out):
 
 
     # the feature layer of del
-
+    # 设置梯度停止
     conv_dim = conv_relu_feature_layer(feature, 256)
 
     conv_dsp = L.Convolution(conv_dim,
