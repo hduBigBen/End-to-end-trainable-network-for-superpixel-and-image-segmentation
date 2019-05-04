@@ -59,7 +59,8 @@ def conv_relu_feature_layer(bottom, num_out):
                                                  weight_filler=dict(type='xavier', std=0.01),
                                                  bias_filler=dict(type='constant', value=0)),
                           param=[{'lr_mult': 1, 'decay_mult': 1}, {'lr_mult': 2, 'decay_mult': 0}],
-                          propagate_down=False)
+                          )
+                          # propagate_down=False)
 
     conv1 = L.ReLU(conv1, in_place = True)
 
