@@ -119,10 +119,10 @@ def compute_spixels(data_type, n_spixels, num_steps,
                     sio.savemat(new_save_root + '/' + imgname + '.mat', {'Segmentation': out2})
 
                     # 保存jsp格式
-                    out3 = np.squeeze(net.blobs['segmentation'].data).astype(int)
-                    sge_image = get_spixel_image(given_img, out3)
-                    out_img_file = new_save_root + '/' + imgname + '.jpg'
-                    imsave(out_img_file, sge_image)
+                    # out3 = np.squeeze(net.blobs['segmentation'].data).astype(int)
+                    # sge_image = get_spixel_image(given_img, out3)
+                    # out_img_file = new_save_root + '/' + imgname + '.jpg'
+                    # imsave(out_img_file, sge_image)
 
 
 
