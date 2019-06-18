@@ -23,7 +23,7 @@ from create_net import load_ssn_net
 
 import sys
 sys.path.append('../lib/cython')
-# from connectivity import enforce_connectivity
+from connectivity import enforce_connectivity
 
 def compute_spixels(data_type, n_spixels, num_steps,
                     caffe_model, out_folder, is_connected = True):

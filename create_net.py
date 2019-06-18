@@ -5,10 +5,9 @@ from caffe.proto import caffe_pb2
 import tempfile
 from loss_functions import *
 import numpy as np
-
 import sys
 sys.path.append('../lib/cython')
-# from connectivity import enforce_connectivity
+from connectivity import enforce_connectivity
 
 from utils import *
 
