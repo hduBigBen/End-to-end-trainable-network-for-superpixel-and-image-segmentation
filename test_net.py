@@ -14,6 +14,7 @@ from scipy.misc import fromimage
 from scipy.misc import imsave
 from PIL import Image
 import argparse
+import cv2
 
 from init_caffe import *
 from config import *
@@ -35,13 +36,16 @@ def compute_spixels(data_type, n_spixels, num_steps,
 
     p_scale = 0.40
     color_scale = 0.26
+
     bound = range(1, 71, 2)
+    # bound = range(31, 71, 2)
     for i in range(len(bound)):
         threshold = bound[i] / 100.0
         if threshold <= 0.3:
             min_size = [0, 1, 2, 3]
         else:
-            min_size = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+            # min_size = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+            min_size = [0, 1, 2, 3, 4, 5, 6]
 
         for j in range(len(min_size)):
             new_save_root = os.path.join(out_folder, 'threshold_{:.2f}_{}'.format(threshold, min_size[j]))
@@ -88,46 +92,45 @@ def compute_spixels(data_type, n_spixels, num_steps,
                     else:
                         net = initialize_net_weight(net)
 
-                        # net.blobs['img'] = inputs['img']
-                        # net.blobs['spixel_init'] = spixel_initmap
-                        # net.blobs['feat_spixel_init'] = feat_spixel_initmap
-                        # net.blobs['bound_param'].data[...] = threshold
-                        # net.blobs['minsize_param'].data[...] = min_size[j]
-
                     num_spixels = int(num_spixels_w * num_spixels_h)
                     result = net.forward_all(**dinputs)
-                    # result = net.forward()
 
 
 
 
                     given_img = fromimage(Image.open(IMG_FOLDER[data_type] + imgname + '.jpg'))
-                    # spix_index = np.squeeze(net.blobs['new_spix_indices'].data).astype(int)
-                    #
-                    # if enforce_connectivity:
-                    #     segment_size = (given_img.shape[0] * given_img.shape[1]) / (int(n_spixels) * 1.0)
-                    #     min_size = int(0.06 * segment_size)
-                    #     max_size = int(3 * segment_size)
-                    #     spix_index = enforce_connectivity(spix_index[None, :, :], min_size, max_size)[0]
-                    #
-                    # spixel_image = get_spixel_image(given_img, spix_index)
-
 
                     # 保存mat格式
-                    out2 = net.blobs['segmentation'].data[0].copy()
+                    # out2 = net.blobs['segmentation'].data[0].copy()
+                    out2 = net.blobs['segmentation'].data[0].copy().astype(int)
+                    # print out2.shape
+
+                    # out2 = np.squeeze(net.blobs['segmentation'].data).astype(int)
+                    # print out2.shape
+                    #
+
+                    if enforce_connectivity:
+                        segment_size = (given_img.shape[0] * given_img.shape[1]) / (int(n_spixels) * 1.0)
+                        min_size1 = int(0.24 * segment_size)
+                        max_size1 = int(100 * segment_size)
+                        out2 = enforce_connectivity(out2, min_size1, max_size1)[0]
+                    # kernel = np.ones((3,3),np.uint16)
+
+                    # out2 = out2.astype(dtype=np.uint16)
+                    # print "change the dim"
+                    # out2 = out2[None, :, :]
+                    # print out2.shape
+                    # out2 = out2.transpose((1, 2, 0)).astype(dtype=np.uint16)
+
+                    # open
+                    # out2 = cv2.morphologyEx(out2, cv2.MORPH_OPEN, kernel)
+                    out2 = out2[None, :, :]
                     out2 = out2.transpose((1, 2, 0)).astype(dtype=np.uint16)
+
+                    # out2 = out2.astype(dtype=np.uint16)
+
+
                     sio.savemat(new_save_root + '/' + imgname + '.mat', {'Segmentation': out2})
-
-                    # 保存jsp格式
-                    # out3 = np.squeeze(net.blobs['segmentation'].data).astype(int)
-                    # sge_image = get_spixel_image(given_img, out3)
-                    # out_img_file = new_save_root + '/' + imgname + '.jpg'
-                    # imsave(out_img_file, sge_image)
-
-
-
-
-
 
     return
 
