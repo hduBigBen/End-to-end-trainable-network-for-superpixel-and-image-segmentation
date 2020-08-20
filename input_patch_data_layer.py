@@ -116,7 +116,7 @@ class InputRead(caffe.Layer):
 
         self.batch_size = TRAIN_BATCH_SIZE
         self.patch_size = [self.height, self.width]
-        self.num_tops = 7
+        self.num_tops = 6
         # self.top_names = ['img', 'spixel_init', 'feat_spixel_init', 'label', 'problabel']
         self.top_names = ['img', 'spixel_init', 'feat_spixel_init', 'label', 'problabel','seg_label']
         self.top_channels = [3, 1, 1, 1, 50, 1]

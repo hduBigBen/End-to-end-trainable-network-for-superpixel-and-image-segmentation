@@ -184,21 +184,6 @@ def fetch_and_transform_patch_data(imgname,
     image = scale_image(image, s_factor)
     im = rgb2lab(image)
 
-    # 分割后的图像
-
-    # sort_gt_folder = SORT_GT_FOLDER[data_type]
-    # sort_gt__filename = sort_gt_folder + imgname + '.png'
-    # sort_gt = img_as_float(io.imread(sort_gt__filename))
-    # sort_gt = scale_image(sort_gt, s_factor)
-    # sort_gt = rgb2lab(sort_gt)
-
-    # 超像素
-    # sp_gt_folder = SP_GT_FOLDER[data_type]
-    # sp_gt_filename = sp_gt_folder + imgname + '.png'
-    # sp_gt = img_as_float(io.imread(sp_gt_filename))
-    # sp_gt = scale_sp_label(sp_gt, s_factor)
-    # sp_gt = rgb2lab(sp_gt)
-
     gt_folder = GT_FOLDER[data_type]
     gt_filename = gt_folder + imgname + '.mat'
     gtseg_all = loadmat(gt_filename)
@@ -232,15 +217,7 @@ def fetch_and_transform_patch_data(imgname,
     im_cropped = im[start_row : start_row + out_height,
                     start_col : start_col + out_width, :]
 
-    # sort_gt
-    # sort_gt_cropped = sort_gt[start_row: start_row + out_height,
-    #                   start_col: start_col + out_width, :]
-    # sp_gt_cropped = sp_gt[start_row: start_row + out_height,
-    #                 start_col: start_col + out_width]
-
     out_img = transform_and_get_image(im_cropped, max_spixels, [out_height, out_width])
-    # out_sort_gt = transform_and_get_image(sort_gt_cropped, max_spixels, [out_height, out_width])
-    # out_sp_gt = transform_and_get_splabel(sp_gt_cropped, max_spixels, [out_height, out_width])
 
     gtseg_cropped = gtseg[start_row : start_row + out_height,
                           start_col : start_col + out_width]
